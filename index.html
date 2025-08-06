@@ -1,10 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sunnybear | AI Product Builder</title>
+    <title>써니베어 – 모바일 앱 & 웹앱을 직접 만드는 AI 빌더</title>
+    <meta name="description" content="모바일 앱부터 웹앱까지! GPT와 함께 만든 날씨요정 달멍씨 앱과 키워드 자동화 도구 달멍봇 키워드 마스터. AI 빌더 써니베어의 실전 프로젝트 포트폴리오.">
+    <meta name="keywords" content="써니베어, 앱 개발, 웹앱, GPT 키워드 도구, 날씨 앱, AI 빌더, 노코드, 달멍씨, 키워드 마스터, 포트폴리오, Android Studio, React, Node.js, Gemini API, 캐릭터 IP">
+    <meta property="og:title" content="써니베어 – GPT와 앱을 만드는 빌더의 실험실" />
+    <meta property="og:description" content="날씨 알림 앱부터 SEO 키워드 웹툴까지! AI와 함께 실제 앱 2개를 출시한 크리에이터 써니베어의 포트폴리오입니다." />
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -15,6 +18,23 @@
     <style>
       body { font-family: 'Noto Sans KR', sans-serif; }
       .font-orbitron { font-family: 'Orbitron', sans-serif; }
+
+      @keyframes gradient-animation {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
+      .text-animated-gradient {
+        background: linear-gradient(-45deg, #f59e0b, #ea580c, #d946ef, #23a6d5);
+        background-size: 300% 300%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+        animation: gradient-animation 8s ease infinite;
+        text-shadow: 0 0 8px rgba(245, 158, 11, 0.4); /* Amber glow */
+      }
     </style>
     <!-- React Libraries -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
@@ -383,10 +403,12 @@
               <main>
                 <section ref={sectionRefs.hero} id="hero" className="min-h-screen flex items-center justify-center text-center">
                   <div className={`transition-opacity duration-1000 ease-in ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 font-orbitron">
-                      <span className="text-orange-500">아이디어</span>를 <span className="text-amber-600">현실</span>로 만드는
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 font-orbitron text-animated-gradient">
+                      아이디어를 현실로 만드는
                     </h1>
-                    <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-stone-800 mb-8">AI 시대의 빌더, Sunnybear</p>
+                    <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-stone-800 mb-8">
+                      AI 시대의 빌더, <span className="font-orbitron text-animated-gradient">Sunnybear</span>
+                    </p>
                     <div className="flex flex-wrap justify-center gap-3">
                       {['#AI_Orchestrator', '#Problem_Solver', '#Product_Maker'].map((tag, i) => (
                         <span key={tag} className={`bg-white text-stone-600 px-4 py-2 rounded-full text-sm md:text-base font-semibold shadow-sm transition-all duration-500 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{transitionDelay: `${200 * i}ms`}}>
@@ -399,6 +421,9 @@
                 
                 <Section ref={sectionRefs.about} id="about">
                     <div className="max-w-4xl mx-auto text-center">
+                        <p className="text-xl md:text-2xl font-bold text-amber-800 leading-relaxed mb-6">
+                            모바일 앱 1종, 웹앱 1종, 전부 실전 배포! GPT, 날씨 API, Gemini, 캐릭터 IP까지 연동된 ‘써니베어표 올인원 앱들’을 소개합니다.
+                        </p>
                         <p className="text-lg md:text-xl text-stone-600 leading-relaxed">
                             컴퓨터 공학 전공자가 아니지만, 순수한 '만들고 싶은' 열정과 양쪽의 장점을 모두 흡수하는 유연한 사고로 AI 도구를 능숙하게 활용하여 복잡한 웹 앱과 모바일 앱을 기획하고 구현하는 AI 기반 프로덕트 빌더입니다.
                         </p>
