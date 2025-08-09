@@ -1026,11 +1026,11 @@
                     또는 그냥 기술 이야기가 하고 싶으시다면 언제든 연락주세요!
                 </p>
                 <div class="contact-links">
-                    <a href="mailto:rsy0314@gmail.com" class="contact-item">
+                    <div class="contact-item" onclick="copyEmail()">
                         <span class="contact-icon">📧</span>
                         <div class="contact-title">Email</div>
-                        <div class="contact-desc">연락하기</div>
-                    </a>
+                        <div class="contact-desc">클릭해서 복사</div>
+                    </div>
                     <div class="contact-item" onclick="copyEmail()">
                         <span class="contact-icon">📋</span>
                         <div class="contact-title">Copy</div>
@@ -1054,14 +1054,13 @@
     <!-- BGM 플레이어 -->
     <div class="bgm-player" id="bgmPlayer">
         <div class="bgm-controls">
-            <a href="https://soundcloud.com/3ljnfgum3hzs/1a1" target="_blank" class="play-btn" style="display: flex; align-items: center; justify-content: center; text-decoration: none; color: white;">🎵</a>
+            <div class="play-btn" onclick="openMusic()" style="cursor: pointer;">🎵</div>
             <div class="bgm-info">
                 <div class="bgm-title">Cafe Music</div>
                 <div class="bgm-artist">by Sunnybear</div>
             </div>
             <div class="volume-control">
                 <span class="volume-icon">🎧</span>
-                <span style="color: white; font-size: 0.8rem;">클릭해서 듣기</span>
             </div>
         </div>
     </div>
@@ -1093,10 +1092,47 @@
             });
         }
 
+        function openEmail() {
+            // 여러 방법으로 시도
+            try {
+                // 방법 1: mailto 링크
+                const link = document.createElement('a');
+                link.href = 'mailto:rsy0314@gmail.com';
+                link.click();
+            } catch(e) {
+                // 방법 2: 이메일 주소 표시
+                alert('이메일 주소: rsy0314@gmail.com\n\n복사해서 메일 앱에 붙여넣으세요! 📧');
+            }
+        }
+
+        function openMusic() {
+            // 여러 방법으로 시도
+            try {
+                // 방법 1: window.open
+                const newWindow = window.open('https://soundcloud.com/3ljnfgum3hzs/1a1', '_blank');
+                if (!newWindow) {
+                    throw new Error('Popup blocked');
+                }
+            } catch(e) {
+                // 방법 2: 링크 표시
+                if (confirm('브라우저가 팝업을 차단했습니다.\n\n카페음악 들으러 가시겠어요?')) {
+                    window.location.href = 'https://soundcloud.com/3ljnfgum3hzs/1a1';
+                }
+            }
+        }
+
         function copyEmail() {
-            navigator.clipboard.writeText('rsy0314@gmail.com').then(() => {
-                alert('이메일이 복사되었습니다!');
-            });
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText('rsy0314@gmail.com').then(() => {
+                    alert('이메일이 복사되었습니다! 📧\n\nrsy0314@gmail.com');
+                }).catch(() => {
+                    // 클립보드 실패시 수동 복사 안내
+                    prompt('이메일 주소를 복사하세요:', 'rsy0314@gmail.com');
+                });
+            } else {
+                // 클립보드 API 미지원시 수동 복사
+                prompt('이메일 주소를 복사하세요:', 'rsy0314@gmail.com');
+            }
         }
 
         // 페이지 로드 후 이벤트 리스너 등록
