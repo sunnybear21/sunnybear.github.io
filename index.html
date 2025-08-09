@@ -28,7 +28,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* 애니메이션 정의 */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -72,24 +71,6 @@
             }
         }
 
-        @keyframes glow {
-            0%, 100% {
-                box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
-            }
-            50% {
-                box-shadow: 0 0 40px rgba(255, 107, 107, 0.6);
-            }
-        }
-
-        @keyframes typing {
-            from {
-                width: 0;
-            }
-            to {
-                width: 100%;
-            }
-        }
-
         @keyframes colorShift {
             0% { color: #FF6B6B; }
             25% { color: #4ECDC4; }
@@ -102,11 +83,6 @@
             0% { color: rgba(255, 255, 255, 0.9); }
             50% { color: rgba(255, 255, 255, 1); }
             100% { color: rgba(255, 255, 255, 0.9); }
-        }
-
-        @keyframes gentleBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
         }
 
         /* 헤더 */
@@ -485,10 +461,6 @@
             transform: scale(1.05);
         }
 
-        .tech-tag:nth-child(odd) {
-            /* 애니메이션 제거 */
-        }
-
         .project-btn {
             background: linear-gradient(45deg, #667eea, #764ba2);
             color: white;
@@ -616,6 +588,105 @@
             transform: translateY(0);
         }
 
+        /* BGM 플레이어 */
+        .bgm-player {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            z-index: 999;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            opacity: 0.9;
+        }
+
+        .bgm-player:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .bgm-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .play-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .bgm-info {
+            color: white;
+            font-size: 0.9rem;
+            text-align: left;
+        }
+
+        .bgm-title {
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .bgm-artist {
+            opacity: 0.8;
+            font-size: 0.8rem;
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .volume-slider {
+            width: 60px;
+            height: 4px;
+            border-radius: 2px;
+            background: rgba(255, 255, 255, 0.3);
+            outline: none;
+            cursor: pointer;
+            -webkit-appearance: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .volume-icon {
+            color: white;
+            font-size: 0.9rem;
+        }
+
         /* 플로팅 요소들 */
         .floating-element {
             position: absolute;
@@ -644,6 +715,29 @@
         }
 
         /* 반응형 */
+        @media (max-width: 768px) {
+            .bgm-player {
+                bottom: 20px;
+                right: 20px;
+                padding: 0.8rem 1rem;
+                border-radius: 20px;
+            }
+
+            .bgm-info {
+                display: none;
+            }
+
+            .volume-control {
+                display: none;
+            }
+
+            .play-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+        }
+
         @media (max-width: 480px) {
             .hero h1 {
                 font-size: 2.5rem;
@@ -937,7 +1031,7 @@
                         <div class="contact-title">Email</div>
                         <div class="contact-desc">연락하기</div>
                     </a>
-                    <div class="contact-item" onclick="copyEmail(); return false;">
+                    <div class="contact-item" onclick="copyEmail()">
                         <span class="contact-icon">📋</span>
                         <div class="contact-title">Copy</div>
                         <div class="contact-desc">이메일 복사</div>
@@ -957,8 +1051,22 @@
         </div>
     </section>
 
+    <!-- BGM 플레이어 -->
+    <div class="bgm-player" id="bgmPlayer">
+        <div class="bgm-controls">
+            <a href="https://soundcloud.com/3ljnfgum3hzs/1a1" target="_blank" class="play-btn" style="display: flex; align-items: center; justify-content: center; text-decoration: none; color: white;">🎵</a>
+            <div class="bgm-info">
+                <div class="bgm-title">Cafe Music</div>
+                <div class="bgm-artist">by Sunnybear</div>
+            </div>
+            <div class="volume-control">
+                <span class="volume-icon">🎧</span>
+                <span style="color: white; font-size: 0.8rem;">클릭해서 듣기</span>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // 스크롤 애니메이션 및 색상 변화
         function animateOnScroll() {
             const elements = document.querySelectorAll('.animate-on-scroll');
             elements.forEach(element => {
@@ -970,18 +1078,14 @@
                 }
             });
 
-            // 스크롤에 따른 텍스트 색상 변화
             const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.5;
             
-            // 섹션 제목들의 색상 변화
             const sectionTitles = document.querySelectorAll('.section-title');
             sectionTitles.forEach((title, index) => {
                 const hue = (scrolled / 10 + index * 60) % 360;
                 title.style.color = `hsl(${hue}, 70%, 85%)`;
             });
 
-            // 스킬 아이콘 색상 변화
             const skillIcons = document.querySelectorAll('.skill-icon');
             skillIcons.forEach((icon, index) => {
                 const hue = (scrolled / 8 + index * 90) % 360;
@@ -989,66 +1093,53 @@
             });
         }
 
-        // 이메일 복사 기능
         function copyEmail() {
             navigator.clipboard.writeText('rsy0314@gmail.com').then(() => {
                 alert('이메일이 복사되었습니다!');
             });
         }
 
-        // 부드러운 스크롤
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId && targetId !== '#') {
-                    const target = document.querySelector(targetId);
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
+        // 페이지 로드 후 이벤트 리스너 등록
+        window.addEventListener('load', function() {
+            // 부드러운 스크롤
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId && targetId !== '#') {
+                        const target = document.querySelector(targetId);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
                     }
-                }
+                });
             });
-        });
 
-        // 스크롤 이벤트 리스너
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('load', animateOnScroll);
-
-        // 헤더 스크롤 효과
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = 'none';
-            }
-        });
-
-        // 타이핑 효과 (선택사항)
-        function typeWriter(element, text, speed = 50) {
-            let i = 0;
-            element.innerHTML = '';
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            type();
-        }
-
-        // 페이지 로드 시 환영 메시지
-        window.addEventListener('load', () => {
+            animateOnScroll();
+            
             setTimeout(() => {
                 console.log('AI 믹스 마스터 써니베어의 포트폴리오에 오신 걸 환영합니다!');
-                console.log('이 포트폴리오도 여러 AI들과 협업해서 만들었어요!');
+                console.log('우하단 🎵 버튼을 눌러 써니베어님의 카페음악을 들어보세요!');
             }, 1000);
+        });
+
+        // 스크롤 이벤트
+        window.addEventListener('scroll', function() {
+            animateOnScroll();
+            
+            const header = document.querySelector('.header');
+            if (header) {
+                if (window.scrollY > 100) {
+                    header.style.background = 'rgba(255, 255, 255, 0.98)';
+                    header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.background = 'rgba(255, 255, 255, 0.95)';
+                    header.style.boxShadow = 'none';
+                }
+            }
         });
     </script>
 </body>
