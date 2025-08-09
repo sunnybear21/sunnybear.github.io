@@ -306,9 +306,13 @@
         /* 스킬 섹션 */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
             gap: 2rem;
             margin-top: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .skill-card {
@@ -323,6 +327,11 @@
             transform: translateY(50px);
             animation: fadeInUp 0.8s ease-out forwards;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .skill-card:hover {
@@ -341,7 +350,7 @@
         }
 
         .skill-title {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: bold;
             color: white;
             margin-bottom: 1rem;
@@ -349,7 +358,8 @@
 
         .skill-desc {
             color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
+            line-height: 1.5;
+            font-size: 0.9rem;
         }
 
         /* 프로젝트 섹션 */
@@ -586,7 +596,20 @@
             }
 
             .skills-grid {
-                grid-template-columns: 1fr;
+                max-width: 600px;
+                gap: 1.5rem;
+            }
+
+            .skill-card {
+                padding: 1.5rem;
+            }
+
+            .skill-title {
+                font-size: 1.1rem;
+            }
+
+            .skill-desc {
+                font-size: 0.85rem;
             }
 
             .ai-badges {
@@ -595,8 +618,13 @@
             }
 
             .contact-links {
-                flex-direction: column;
-                align-items: center;
+                max-width: 300px;
+                gap: 0.8rem;
+            }
+
+            .contact-btn {
+                font-size: 0.8rem;
+                padding: 1.2rem 0.8rem;
             }
         }
 
@@ -828,14 +856,14 @@
                     <a href="mailto:rsy0314@gmail.com" class="contact-btn">
                         이메일 보내기
                     </a>
+                    <a href="#" class="contact-btn" onclick="copyEmail(); return false;">
+                        이메일 복사
+                    </a>
                     <a href="https://github.com/sunnybear21" target="_blank" class="contact-btn">
-                        GitHub 구경
+                        GitHub
                     </a>
                     <a href="https://www.youtube.com/@baeksuetv" target="_blank" class="contact-btn">
                         유튜브 채널
-                    </a>
-                    <a href="#" class="contact-btn" onclick="copyEmail(); return false;">
-                        이메일 복사
                     </a>
                 </div>
             </div>
