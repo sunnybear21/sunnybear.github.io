@@ -463,19 +463,22 @@
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.8rem;
             margin-bottom: 1.5rem;
             justify-content: center;
+            align-items: center;
         }
 
         .tech-tag {
             background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
             color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
             font-weight: 600;
             transition: transform 0.2s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .tech-tag:hover {
@@ -523,39 +526,94 @@
         }
 
         .contact-text {
-            color: white;
+            color: rgba(255, 255, 255, 0.95);
             font-size: 1.2rem;
             margin-bottom: 3rem;
             animation: fadeInUp 1s ease-out;
+            line-height: 1.6;
         }
 
         .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            align-items: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1.5rem;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
-        .contact-btn {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 25px;
+        .contact-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 1.5rem;
             text-decoration: none;
-            font-weight: bold;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
-            animation: fadeInUp 1s ease-out;
-            display: inline-block;
-            white-space: nowrap;
+            color: white;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 1;
+            position: relative;
+            overflow: hidden;
         }
 
-        .contact-btn:hover {
-            transform: translateY(-2px) scale(1.05);
-            background: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        .contact-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .contact-item:hover::before {
+            left: 100%;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-8px) scale(1.05);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover .contact-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .contact-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 1);
+            text-align: center;
+            margin: 0;
+        }
+
+        .contact-desc {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 0.3rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover .contact-desc {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* 플로팅 요소들 */
@@ -626,15 +684,26 @@
             }
 
             .contact-links {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr;
                 max-width: 400px;
-                gap: 0.8rem;
+                gap: 1rem;
             }
 
-            .contact-btn {
+            .contact-item {
+                padding: 1.5rem;
+                aspect-ratio: auto;
+            }
+
+            .contact-icon {
+                font-size: 2rem;
+            }
+
+            .contact-title {
+                font-size: 1rem;
+            }
+
+            .contact-desc {
                 font-size: 0.85rem;
-                padding: 1rem 0.8rem;
-                min-height: 50px;
             }
         }
 
@@ -863,17 +932,25 @@
                     또는 그냥 기술 이야기가 하고 싶으시다면 언제든 연락주세요!
                 </p>
                 <div class="contact-links">
-                    <a href="mailto:rsy0314@gmail.com" class="contact-btn">
-                        이메일 보내기
+                    <a href="mailto:rsy0314@gmail.com" class="contact-item">
+                        <span class="contact-icon">📧</span>
+                        <div class="contact-title">Email</div>
+                        <div class="contact-desc">연락하기</div>
                     </a>
-                    <a href="#" class="contact-btn" onclick="copyEmail(); return false;">
-                        이메일 복사
+                    <div class="contact-item" onclick="copyEmail(); return false;">
+                        <span class="contact-icon">📋</span>
+                        <div class="contact-title">Copy</div>
+                        <div class="contact-desc">이메일 복사</div>
+                    </div>
+                    <a href="https://github.com/sunnybear21" target="_blank" class="contact-item">
+                        <span class="contact-icon">💻</span>
+                        <div class="contact-title">GitHub</div>
+                        <div class="contact-desc">코드 보기</div>
                     </a>
-                    <a href="https://github.com/sunnybear21" target="_blank" class="contact-btn">
-                        GitHub
-                    </a>
-                    <a href="https://www.youtube.com/@baeksuetv" target="_blank" class="contact-btn">
-                        유튜브 채널
+                    <a href="https://www.youtube.com/@baeksuetv" target="_blank" class="contact-item">
+                        <span class="contact-icon">🎥</span>
+                        <div class="contact-title">YouTube</div>
+                        <div class="contact-desc">영상 보기</div>
                     </a>
                 </div>
             </div>
