@@ -338,29 +338,37 @@
             font-size: 0.9rem;
         }
 
-        /* 프로젝트 섹션 */
+        /* 프로젝트 섹션 - 아코디언 스타일 */
         .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
             margin-top: 3rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .project-card {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 25px;
-            overflow: hidden;
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: all 0.5s ease;
             opacity: 0;
-            transform: rotateY(15deg) translateY(50px);
+            transform: translateY(50px);
             animation: fadeInUp 1s ease-out forwards;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .project-card.expanded {
+            transform: translateY(0);
         }
 
         .project-card:hover {
-            transform: rotateY(0deg) translateY(-8px) scale(1.01);
+            transform: translateY(-3px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
         }
 
@@ -369,7 +377,22 @@
 
         .project-header {
             padding: 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .project-header::after {
+            content: '▼';
+            position: absolute;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card.expanded .project-header::after {
+            transform: translateY(-50%) rotate(180deg);
         }
 
         .project-title {
@@ -377,6 +400,7 @@
             font-weight: bold;
             color: white;
             margin-bottom: 0.5rem;
+            padding-right: 3rem;
         }
 
         .project-subtitle {
@@ -405,7 +429,17 @@
         }
 
         .project-body {
-            padding: 2rem;
+            padding: 0 2rem 2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+
+        .project-card.expanded .project-body {
+            max-height: 2000px;
+            opacity: 1;
+            padding: 0 2rem 2rem;
         }
 
         .project-desc {
@@ -737,7 +771,8 @@
             }
 
             .projects-grid {
-                grid-template-columns: 1fr;
+                flex-direction: column;
+                gap: 1.5rem;
             }
 
             /* 스킬 그리드 모바일 수정 */
@@ -966,7 +1001,7 @@
             <h2 class="section-title">실전 프로젝트</h2>
             <div class="projects-grid">
                 <!-- 달멍씨 프로젝트 -->
-                <div class="project-card">
+                <div class="project-card" onclick="toggleProject(this)">
                     <div class="project-header">
                         <h3 class="project-title">날씨요정 달멍씨 v1.9</h3>
                         <p class="project-subtitle">TTS 음성 + 미니게임이 있는 감성 날씨 앱</p>
@@ -1008,12 +1043,12 @@
                             <span class="tech-tag">Render</span>
                         </div>
                         <a href="https://play.google.com/store/apps/details?id=com.sunnybear.weather1" 
-                           target="_blank" class="project-btn">앱 다운로드</a>
+                           target="_blank" class="project-btn" onclick="event.stopPropagation()">앱 다운로드</a>
                     </div>
                 </div>
 
                 <!-- 키워드 마스터 프로젝트 -->
-                <div class="project-card">
+                <div class="project-card" onclick="toggleProject(this)">
                     <div class="project-header">
                         <h3 class="project-title">달멍봇 키워드 마스터 V2</h3>
                         <p class="project-subtitle">AI 기반 SEO 분석 & 콘텐츠 생성 웹앱</p>
@@ -1055,7 +1090,7 @@
                             <span class="tech-tag">Naver API</span>
                         </div>
                         <a href="https://github.com/sunnybear21/dalmong-keyword-master-v2" 
-                           target="_blank" class="project-btn">GitHub 보기</a>
+                           target="_blank" class="project-btn" onclick="event.stopPropagation()">GitHub 보기</a>
                     </div>
                 </div>
             </div>
@@ -1139,28 +1174,22 @@
         }
 
         function openEmail() {
-            // 여러 방법으로 시도
             try {
-                // 방법 1: mailto 링크
                 const link = document.createElement('a');
                 link.href = 'mailto:rsy0314@gmail.com';
                 link.click();
             } catch(e) {
-                // 방법 2: 이메일 주소 표시
                 alert('이메일 주소: rsy0314@gmail.com\n\n복사해서 메일 앱에 붙여넣으세요! 📧');
             }
         }
 
         function openMusic() {
-            // 여러 방법으로 시도
             try {
-                // 방법 1: window.open
                 const newWindow = window.open('https://soundcloud.com/3ljnfgum3hzs/1a1', '_blank');
                 if (!newWindow) {
                     throw new Error('Popup blocked');
                 }
             } catch(e) {
-                // 방법 2: 링크 표시
                 if (confirm('브라우저가 팝업을 차단했습니다.\n\n카페음악 들으러 가시겠어요?')) {
                     window.location.href = 'https://soundcloud.com/3ljnfgum3hzs/1a1';
                 }
@@ -1172,12 +1201,25 @@
                 navigator.clipboard.writeText('rsy0314@gmail.com').then(() => {
                     alert('이메일이 복사되었습니다! 📧\n\nrsy0314@gmail.com');
                 }).catch(() => {
-                    // 클립보드 실패시 수동 복사 안내
                     prompt('이메일 주소를 복사하세요:', 'rsy0314@gmail.com');
                 });
             } else {
-                // 클립보드 API 미지원시 수동 복사
                 prompt('이메일 주소를 복사하세요:', 'rsy0314@gmail.com');
+            }
+        }
+
+        // 아코디언 토글 함수
+        function toggleProject(card) {
+            const isExpanded = card.classList.contains('expanded');
+            
+            // 모든 카드 닫기
+            document.querySelectorAll('.project-card').forEach(c => {
+                c.classList.remove('expanded');
+            });
+            
+            // 클릭한 카드가 닫혀있었다면 열기
+            if (!isExpanded) {
+                card.classList.add('expanded');
             }
         }
 
