@@ -716,29 +716,14 @@
 
         /* 반응형 */
         @media (max-width: 768px) {
-            .bgm-player {
-                bottom: 20px;
-                right: 20px;
-                padding: 0.8rem 1rem;
-                border-radius: 20px;
+            .nav {
+                padding: 0 1rem;
             }
 
-            .bgm-info {
-                display: none;
+            .container {
+                padding: 0 1rem;
             }
 
-            .volume-control {
-                display: none;
-            }
-
-            .play-btn {
-                width: 35px;
-                height: 35px;
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 480px) {
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -755,13 +740,18 @@
                 grid-template-columns: 1fr;
             }
 
+            /* 스킬 그리드 모바일 수정 */
             .skills-grid {
-                max-width: 600px;
+                grid-template-columns: 1fr;
+                max-width: 100%;
                 gap: 1.5rem;
+                padding: 0 1rem;
             }
 
             .skill-card {
                 padding: 1.5rem;
+                aspect-ratio: auto;
+                min-height: 200px;
             }
 
             .skill-title {
@@ -798,6 +788,62 @@
 
             .contact-desc {
                 font-size: 0.85rem;
+            }
+
+            .bgm-player {
+                bottom: 20px;
+                right: 20px;
+                padding: 0.8rem 1rem;
+                border-radius: 20px;
+            }
+
+            .bgm-info {
+                display: none;
+            }
+
+            .volume-control {
+                display: none;
+            }
+
+            .play-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+
+            .about-content {
+                padding: 2rem;
+            }
+
+            .about-text {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .skills-grid {
+                padding: 0 0.5rem;
+            }
+
+            .skill-card {
+                padding: 1.2rem;
+                min-height: 180px;
+            }
+
+            .skill-icon {
+                font-size: 2rem;
+            }
+
+            .skill-title {
+                font-size: 1rem;
+            }
+
+            .skill-desc {
+                font-size: 0.8rem;
             }
         }
 
