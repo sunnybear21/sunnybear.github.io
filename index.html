@@ -85,13 +85,33 @@
             100% { color: rgba(255, 255, 255, 0.9); }
         }
 
+        @keyframes cloudFloat {
+            0%, 100% {
+                transform: translateY(0px) translateX(0px) rotate(0deg);
+                opacity: 0.9;
+            }
+            25% {
+                transform: translateY(-10px) translateX(5px) rotate(1deg);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-15px) translateX(-3px) rotate(-1deg);
+                opacity: 0.95;
+            }
+            75% {
+                transform: translateY(-8px) translateX(8px) rotate(0.5deg);
+                opacity: 1;
+            }
+        }
+
         /* 헤더 */
         .header {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             z-index: 1000;
             padding: 1rem 0;
             transition: all 0.3s ease;
@@ -109,7 +129,7 @@
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #667eea;
+            color: white;
             animation: bounce 2s infinite;
         }
 
@@ -121,14 +141,14 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #333;
+            color: rgba(255, 255, 255, 0.9);
             font-weight: 500;
             transition: all 0.3s ease;
             position: relative;
         }
 
         .nav-links a:hover {
-            color: #667eea;
+            color: white;
             transform: translateY(-2px);
         }
 
@@ -139,7 +159,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: #667eea;
+            background: white;
             transition: width 0.3s ease;
         }
 
@@ -167,18 +187,18 @@
             cursor: pointer;
             transition: all 0.3s ease;
             background: transparent;
-            color: rgba(102, 126, 234, 0.8);
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .lang-btn.active {
-            background: #667eea;
+            background: rgba(255, 255, 255, 0.2);
             color: white;
-            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
         }
 
         .lang-btn:hover:not(.active) {
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
         }
 
         [data-lang="ko"] {
@@ -263,7 +283,7 @@
         }
 
         .ai-badge {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
             padding: 0.5rem 1rem;
             border-radius: 25px;
             font-weight: 600;
@@ -276,7 +296,7 @@
 
         .ai-badge:hover {
             transform: scale(1.05);
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.25);
         }
 
         .ai-badge:nth-child(1) { animation-delay: 0.2s; }
@@ -292,7 +312,7 @@
         }
 
         .section:nth-child(even) {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.03);
         }
 
         .section-title {
@@ -305,17 +325,29 @@
             animation: textColorChange 3s ease-in-out infinite;
         }
 
-        /* 어바웃 섹션 - 글래스모피즘 */
+        /* 글래스 스타일 통일 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* 어바웃 섹션 */
         .about-content {
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
             padding: 3rem;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
 
         .about-text {
@@ -352,260 +384,6 @@
             animation: highlightGlow 2s ease-in-out infinite alternate;
         }
 
-        @keyframes cloudFloat {
-            0%, 100% {
-                transform: translateY(0px) translateX(0px) rotate(0deg);
-                opacity: 0.9;
-            }
-            25% {
-                transform: translateY(-10px) translateX(5px) rotate(1deg);
-                opacity: 1;
-            }
-            50% {
-                transform: translateY(-15px) translateX(-3px) rotate(-1deg);
-                opacity: 0.95;
-            }
-            75% {
-                transform: translateY(-8px) translateX(8px) rotate(0.5deg);
-                opacity: 1;
-            }
-        }
-
-        /* 새로운 문 열림 애니메이션 */
-        @keyframes doorOpenLeft {
-            0% {
-                opacity: 1;
-                transform: translateX(0) scale(1) rotate(0deg);
-            }
-            50% {
-                opacity: 0.7;
-                transform: translateX(-30vw) scale(0.8) rotate(-15deg);
-            }
-            100% {
-                opacity: 0;
-                transform: translateX(-100vw) scale(0.5) rotate(-30deg);
-            }
-        }
-
-        @keyframes doorOpenRight {
-            0% {
-                opacity: 1;
-                transform: translateX(0) scale(1) rotate(0deg);
-            }
-            50% {
-                opacity: 0.7;
-                transform: translateX(30vw) scale(0.8) rotate(15deg);
-            }
-            100% {
-                opacity: 0;
-                transform: translateX(100vw) scale(0.5) rotate(30deg);
-            }
-        }
-
-        @keyframes textSplitLeft {
-            0% {
-                opacity: 1;
-                transform: translateX(0) scale(1);
-            }
-            100% {
-                opacity: 0;
-                transform: translateX(-50vw) scale(0.7);
-            }
-        }
-
-        @keyframes textSplitRight {
-            0% {
-                opacity: 1;
-                transform: translateX(0) scale(1);
-            }
-            100% {
-                opacity: 0;
-                transform: translateX(50vw) scale(0.7);
-            }
-        }
-
-        @keyframes contentReveal {
-            0% {
-                opacity: 0;
-                transform: scale(0.9) translateY(30px);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        /* 로딩 오버레이 */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #667eea 100%);
-            background-size: 400% 400%;
-            animation: gradient-shift 8s ease infinite;
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 1s ease, visibility 1s ease;
-        }
-
-        .loading-overlay.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        /* 한국 전통 구름 컨테이너 */
-        .korean-clouds {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        /* 전통 문양 구름들 */
-        .traditional-cloud {
-            position: absolute;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 4rem;
-            animation: cloudFloat 6s ease-in-out infinite;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
-        }
-
-        .cloud-1 {
-            top: 20%;
-            left: 15%;
-            animation-delay: 0s;
-            font-size: 5rem;
-        }
-
-        .cloud-2 {
-            top: 40%;
-            right: 20%;
-            animation-delay: 1.5s;
-            font-size: 3.5rem;
-        }
-
-        .cloud-3 {
-            bottom: 30%;
-            left: 25%;
-            animation-delay: 3s;
-            font-size: 4.5rem;
-        }
-
-        .cloud-4 {
-            top: 60%;
-            left: 60%;
-            animation-delay: 4.5s;
-            font-size: 3rem;
-        }
-
-        .cloud-5 {
-            top: 15%;
-            left: 50%;
-            animation-delay: 2s;
-            font-size: 4rem;
-        }
-
-        /* 전통 문양 패턴들 */
-        .traditional-pattern {
-            position: absolute;
-            color: rgba(255, 255, 255, 0.6);
-            animation: cloudFloat 8s ease-in-out infinite;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-        }
-
-        .pattern-1 {
-            top: 25%;
-            right: 15%;
-            font-size: 2.5rem;
-            animation-delay: 1s;
-        }
-
-        .pattern-2 {
-            bottom: 20%;
-            right: 30%;
-            font-size: 2rem;
-            animation-delay: 3.5s;
-        }
-
-        .pattern-3 {
-            top: 70%;
-            left: 15%;
-            font-size: 2.2rem;
-            animation-delay: 2.5s;
-        }
-
-        .pattern-4 {
-            top: 35%;
-            left: 40%;
-            font-size: 1.8rem;
-            animation-delay: 4s;
-        }
-
-        /* 로딩 텍스트 */
-        .loading-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: white;
-            z-index: 10;
-        }
-
-        .loading-title {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-            animation: textColorChange 2s ease-in-out infinite;
-        }
-
-        .loading-subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            animation: fadeInUp 2s ease infinite alternate;
-        }
-
-        /* 문 열림 애니메이션 클래스 */
-        .door-opening .traditional-cloud.left-side {
-            animation: doorOpenLeft 2s ease-out forwards;
-        }
-
-        .door-opening .traditional-cloud.right-side {
-            animation: doorOpenRight 2s ease-out forwards;
-        }
-
-        .door-opening .traditional-pattern.left-side {
-            animation: doorOpenLeft 1.8s ease-out forwards;
-        }
-
-        .door-opening .traditional-pattern.right-side {
-            animation: doorOpenRight 1.8s ease-out forwards;
-        }
-
-        .door-opening .loading-title {
-            animation: textSplitLeft 1.5s ease-out forwards;
-        }
-
-        .door-opening .loading-subtitle {
-            animation: textSplitRight 1.5s ease-out 0.2s forwards;
-        }
-
-        /* 메인 콘텐츠 등장 */
-        .main-content {
-            opacity: 0;
-            animation: contentReveal 1.5s ease-out 0.5s forwards;
-        }
-
-        .content-revealed .main-content {
-            opacity: 1;
-        }
-
         @keyframes highlightGlow {
             0% { opacity: 0.5; transform: scale(1); }
             100% { opacity: 1; transform: scale(1.02); }
@@ -614,42 +392,31 @@
         /* 스킬 섹션 */
         .skills-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
-            max-width: 800px;
+            max-width: 1000px;
             margin-left: auto;
             margin-right: auto;
         }
 
         .skill-card {
-            background: rgba(255, 255, 255, 0.1);
             padding: 2rem;
-            border-radius: 20px;
             text-align: center;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
             opacity: 0;
             transform: translateY(50px);
             animation: fadeInUp 0.8s ease-out forwards;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            aspect-ratio: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            min-height: 280px;
         }
 
         .skill-card:nth-child(1) { animation-delay: 0.2s; }
         .skill-card:nth-child(2) { animation-delay: 0.4s; }
         .skill-card:nth-child(3) { animation-delay: 0.6s; }
+        .skill-card:nth-child(4) { animation-delay: 0.8s; }
 
         .skill-icon {
             font-size: 2.5rem;
@@ -670,7 +437,7 @@
             font-size: 0.9rem;
         }
 
-        /* 프로젝트 섹션 - 아코디언 스타일 */
+        /* 프로젝트 섹션 */
         .projects-grid {
             display: flex;
             flex-direction: column;
@@ -682,26 +449,31 @@
         }
 
         .project-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.5s ease;
             opacity: 0;
             transform: translateY(50px);
             animation: fadeInUp 1s ease-out forwards;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             cursor: pointer;
             overflow: hidden;
+            position: relative;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
         }
 
         .project-card.expanded {
-            transform: translateY(0);
-        }
-
-        .project-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .project-card:nth-child(1) { animation-delay: 0.3s; }
@@ -802,8 +574,136 @@
             font-size: 1rem;
         }
 
+        /* 기술 다이어그램 추가 */
+        .tech-diagram {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .diagram-title {
+            color: rgba(255, 224, 102, 1);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .flow-box {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            white-space: nowrap;
+        }
+
+        .flow-arrow {
+            color: rgba(255, 224, 102, 0.8);
+            font-weight: bold;
+        }
+
+        /* 타임라인 섹션 */
+        .timeline-section {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .timeline-title {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            position: relative;
+        }
+
+        .timeline-list:before {
+            content: "";
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(255, 224, 102, 0.5);
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 16px;
+            position: relative;
+            padding: 14px 0;
+        }
+
+        .timeline-item:before {
+            content: "";
+            position: absolute;
+            left: 4px;
+            top: 22px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: rgba(255, 224, 102, 0.8);
+            box-shadow: 0 0 0 4px rgba(255, 224, 102, 0.18);
+        }
+
+        .timeline-when {
+            font-weight: 700;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .timeline-what {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        .timeline-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 6px 0 0;
+        }
+
+        .timeline-badge {
+            font-size: 0.7rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 4px 8px;
+            border-radius: 12px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
         .project-details {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.08);
             padding: 1.5rem;
             border-radius: 15px;
             margin: 1.5rem 0;
@@ -824,19 +724,19 @@
         }
 
         .new-feature {
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(129, 199, 132, 0.2));
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(129, 199, 132, 0.15));
             border-left: 4px solid #4CAF50;
             margin: 1rem 0;
         }
 
         .ai-challenge {
-            background: linear-gradient(135deg, rgba(255, 152, 0, 0.2), rgba(255, 193, 7, 0.2));
+            background: linear-gradient(135deg, rgba(255, 152, 0, 0.15), rgba(255, 193, 7, 0.15));
             border-left: 4px solid #FF9800;
             margin: 1rem 0;
         }
 
         .global-feature {
-            background: linear-gradient(135deg, rgba(33, 150, 243, 0.2), rgba(100, 181, 246, 0.2));
+            background: linear-gradient(135deg, rgba(33, 150, 243, 0.15), rgba(100, 181, 246, 0.15));
             border-left: 4px solid #2196F3;
             margin: 1rem 0;
         }
@@ -867,10 +767,10 @@
         }
 
         .project-btn {
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));
             color: white;
             padding: 1rem 2.5rem;
-            border: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 15px;
             font-weight: bold;
             cursor: pointer;
@@ -884,11 +784,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            backdrop-filter: blur(10px);
         }
 
         .project-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3));
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
         }
 
         /* 연락처 섹션 */
@@ -919,14 +821,9 @@
         }
 
         .contact-item {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
             padding: 1.5rem;
             text-decoration: none;
             color: white;
-            transition: all 0.4s ease;
             cursor: pointer;
             display: flex;
             flex-direction: column;
@@ -950,13 +847,6 @@
 
         .contact-item:hover::before {
             left: 100%;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-8px) scale(1.05);
-            background: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            border-color: rgba(255, 255, 255, 0.4);
         }
 
         .contact-icon {
@@ -998,7 +888,7 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 25px;
@@ -1026,8 +916,8 @@
         }
 
         .play-btn {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            border: none;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3));
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
             width: 40px;
             height: 40px;
@@ -1038,11 +928,12 @@
             transition: all 0.3s ease;
             color: white;
             font-size: 1rem;
+            backdrop-filter: blur(10px);
         }
 
         .play-btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.4));
         }
 
         .bgm-info {
@@ -1059,37 +950,6 @@
         .bgm-artist {
             opacity: 0.8;
             font-size: 0.8rem;
-        }
-
-        .volume-control {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .volume-slider {
-            width: 60px;
-            height: 4px;
-            border-radius: 2px;
-            background: rgba(255, 255, 255, 0.3);
-            outline: none;
-            cursor: pointer;
-            -webkit-appearance: none;
-        }
-
-        .volume-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: white;
-            cursor: pointer;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        .volume-icon {
-            color: white;
-            font-size: 0.9rem;
         }
 
         /* 플로팅 요소들 */
@@ -1146,7 +1006,6 @@
                 gap: 1.5rem;
             }
 
-            /* 스킬 그리드 모바일 수정 */
             .skills-grid {
                 grid-template-columns: 1fr;
                 max-width: 100%;
@@ -1156,7 +1015,6 @@
 
             .skill-card {
                 padding: 1.5rem;
-                aspect-ratio: auto;
                 min-height: 200px;
             }
 
@@ -1207,10 +1065,6 @@
                 display: none;
             }
 
-            .volume-control {
-                display: none;
-            }
-
             .play-btn {
                 width: 35px;
                 height: 35px;
@@ -1227,6 +1081,24 @@
 
             .section-title {
                 font-size: 2rem;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+                padding-left: 28px;
+            }
+
+            .timeline-list:before {
+                left: 10px;
+            }
+
+            .timeline-item:before {
+                left: 1px;
+            }
+
+            .flow-diagram {
+                flex-direction: column;
+                gap: 0.8rem;
             }
         }
 
@@ -1267,34 +1139,6 @@
     </style>
 </head>
 <body data-current-lang="ko">
-    <!-- 한국 전통 구름 로딩 화면 -->
-    <div class="loading-overlay" id="loadingOverlay">
-        <div class="korean-clouds">
-            <!-- 전통 구름들 - 좌/우 분류 -->
-            <div class="traditional-cloud cloud-1 left-side">☁</div>
-            <div class="traditional-cloud cloud-2 right-side">☁</div>
-            <div class="traditional-cloud cloud-3 left-side">☁</div>
-            <div class="traditional-cloud cloud-4 right-side">☁</div>
-            <div class="traditional-cloud cloud-5 left-side">☁</div>
-            
-            <!-- 한국 전통 문양들 - 좌/우 분류 -->
-            <div class="traditional-pattern pattern-1 right-side">✿</div>
-            <div class="traditional-pattern pattern-2 right-side">❀</div>
-            <div class="traditional-pattern pattern-3 left-side">✾</div>
-            <div class="traditional-pattern pattern-4 left-side">❋</div>
-            
-            <!-- 로딩 텍스트 -->
-            <div class="loading-text">
-                <div class="loading-title" data-lang="ko">써니베어</div>
-                <div class="loading-title" data-lang="en">Sunnybear</div>
-                <div class="loading-subtitle" data-lang="ko">AI 오케스트레이터의 포트폴리오가 열리고 있습니다...</div>
-                <div class="loading-subtitle" data-lang="en">AI Orchestrator's portfolio is opening...</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 메인 콘텐츠 -->
-    <div class="main-content">
     <!-- 헤더 -->
     <header class="header">
         <nav class="nav">
@@ -1351,7 +1195,7 @@
             <h2 class="section-title" data-lang="ko">About Me</h2>
             <h2 class="section-title" data-lang="en">About Me</h2>
             
-            <div class="about-content">
+            <div class="about-content glass-card">
                 <div data-lang="ko">
                     <p class="about-text">
                         안녕하세요! 저는 <span class="highlight">다양한 AI들을 오케스트레이션</span>해서 실제 서비스를 만드는 AI 빌더입니다. 
@@ -1390,7 +1234,7 @@
             <h2 class="section-title" data-lang="en" style="display:none;">Core Skills</h2>
             
             <div class="skills-grid">
-                <div class="skill-card">
+                <div class="skill-card glass-card">
                     <div class="skill-icon">⚡</div>
                     <h3 class="skill-title" data-lang="ko">AI 오케스트레이션</h3>
                     <h3 class="skill-title" data-lang="en" style="display:none;">AI Orchestration</h3>
@@ -1403,7 +1247,7 @@
                         and mix them strategically to achieve optimal results
                     </p>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card glass-card">
                     <div class="skill-icon">⚙️</div>
                     <h3 class="skill-title" data-lang="ko">풀스택 구현</h3>
                     <h3 class="skill-title" data-lang="en" style="display:none;">Full-Stack Implementation</h3>
@@ -1416,7 +1260,7 @@
                         web apps (React), backend (Node.js), to API integrations
                     </p>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card glass-card">
                     <div class="skill-icon">🎯</div>
                     <h3 class="skill-title" data-lang="ko">로직 헌터</h3>
                     <h3 class="skill-title" data-lang="en" style="display:none;">Logic Hunter</h3>
@@ -1429,7 +1273,7 @@
                         find root causes, and collaborate with AIs to discover solutions
                     </p>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card glass-card">
                     <div class="skill-icon">🚀</div>
                     <h3 class="skill-title" data-lang="ko">빠른 실행력</h3>
                     <h3 class="skill-title" data-lang="en" style="display:none;">Rapid Execution</h3>
@@ -1453,7 +1297,7 @@
             <h2 class="section-title" data-lang="en" style="display:none;">Real Projects</h2>
             <div class="projects-grid">
                 <!-- 달멍씨 프로젝트 -->
-                <div class="project-card" onclick="toggleProject(this)">
+                <div class="project-card glass-card" onclick="toggleProject(this)">
                     <div class="project-header">
                         <h3 class="project-title" data-lang="ko">날씨요정 달멍씨 v1.9.3</h3>
                         <h3 class="project-title" data-lang="en" style="display:none;">Weather Fairy Dalmong v1.9.3</h3>
@@ -1469,6 +1313,82 @@
                                 단순한 날씨 앱에서 <strong>6개 국어를 지원하는 글로벌 앱</strong>으로 진화했고, 
                                 유저 피드백을 반영해 실시간 기상특보, 시간별/주간별 예보, 위치 검색 등 실용적인 기능들을 계속 추가하고 있습니다.
                             </p>
+
+                            <!-- 기술적 구현 다이어그램 -->
+                            <div class="tech-diagram">
+                                <div class="diagram-title">🔧 핵심 기술 아키텍처</div>
+                                <div class="flow-diagram">
+                                    <div class="flow-box">사용자 검색어</div>
+                                    <div class="flow-arrow">→</div>
+                                    <div class="flow-box">지오코딩 API</div>
+                                    <div class="flow-arrow">→</div>
+                                    <div class="flow-box">위도·경도 변환</div>
+                                    <div class="flow-arrow">→</div>
+                                    <div class="flow-box">날씨 API 호출</div>
+                                    <div class="flow-arrow">→</div>
+                                    <div class="flow-box">실시간 UI 출력</div>
+                                </div>
+                                <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.8rem; margin-top: 0.8rem;">
+                                    전세계 도시 검색을 위한 좌표 기반 데이터 흐름 설계
+                                </p>
+                            </div>
+
+                            <!-- 개발 타임라인 -->
+                            <div class="timeline-section">
+                                <div class="timeline-title">📱 개발 타임라인</div>
+                                <div class="timeline-subtitle">아이디어 → 비공개 테스트 → 출시 → 대규모 업데이트</div>
+                                
+                                <ol class="timeline-list">
+                                    <li class="timeline-item">
+                                        <div class="timeline-when">6월 말 ~ 7월 13일</div>
+                                        <div>
+                                            <p class="timeline-what"><strong>기획 & 비공개 테스트(3주)</strong> — 기본 UI/UX 구축, OpenWeather + Render로 API 키 보호, 테스트/버그 수정</p>
+                                            <div class="timeline-badges">
+                                                <span class="timeline-badge">UI/UX</span>
+                                                <span class="timeline-badge">OpenWeather</span>
+                                                <span class="timeline-badge">Render</span>
+                                                <span class="timeline-badge">Closed Test</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    
+                                    <li class="timeline-item">
+                                        <div class="timeline-when">7월 13일</div>
+                                        <div>
+                                            <p class="timeline-what"><strong>첫 공개 출시</strong> — 캐릭터 반응(맑음멍·흐림멍·눈멍), 위치 기반 날씨, 아침 7시 알림</p>
+                                            <div class="timeline-badges">
+                                                <span class="timeline-badge">Release</span>
+                                                <span class="timeline-badge">Character UX</span>
+                                                <span class="timeline-badge">Alarm</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    
+                                    <li class="timeline-item">
+                                        <div class="timeline-when">8월 1~3일</div>
+                                        <div>
+                                            <p class="timeline-what"><strong>대규모 업데이트(3일 집중)</strong> — Open-Meteo 전환, 전세계 도시 검색, 시간별·주간 예보, TTS, 다국어 지원</p>
+                                            <div class="timeline-badges">
+                                                <span class="timeline-badge">Open-Meteo</span>
+                                                <span class="timeline-badge">Global Search</span>
+                                                <span class="timeline-badge">TTS</span>
+                                                <span class="timeline-badge">i18n</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    
+                                    <li class="timeline-item">
+                                        <div class="timeline-when">8월 이후</div>
+                                        <div>
+                                            <p class="timeline-what"><strong>확장 & 안정화</strong> — 성능 튜닝, 포트폴리오/배포 채널 정비</p>
+                                            <div class="timeline-badges">
+                                                <span class="timeline-badge">Performance</span>
+                                                <span class="timeline-badge">Optimization</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
                             
                             <div class="project-details global-feature">
                                 <div class="project-challenge">
@@ -1510,26 +1430,6 @@
                                     • SDK35 정책 대응한 권한 시스템 및 Google Play 출시 완료
                                 </div>
                             </div>
-
-                            <div class="project-details ai-challenge">
-                                <div class="project-challenge">
-                                    <strong>🔍 검색 기능 문제 해결 스토리:</strong><br>
-                                    • <em>문제:</em> 위치 검색 시 계속 오류 발생, AI들은 검색 로직만 수정하려 함<br>
-                                    • <em>AI의 한계:</em> 검색 부분만 집중해서 전체 플로우를 보지 못함<br>
-                                    • <em>돌파구 발견:</em> "검색과 날씨 정보 표시를 한 번에 연결하자!"<br>
-                                    • <em>해결책:</em> API 호출과 UI 업데이트를 하나의 플로우로 통합<br>
-                                    • <em>결과:</em> 검색 → 즉시 날씨 정보 반영으로 사용자 경험 대폭 개선
-                                </div>
-                            </div>
-
-                            <div class="project-details">
-                                <div class="project-challenge">
-                                    <strong>🎮 게임 & 최적화:</strong><br>
-                                    • 4종 미니게임 로직 설계 및 메모리 최적화<br>
-                                    • 전체 시스템 안정성 향상 및 성능 튜닝<br>
-                                    • 다국어 환경에서의 앱 호환성 검증
-                                </div>
-                            </div>
                         </div>
 
                         <div data-lang="en" style="display:none;">
@@ -1538,6 +1438,82 @@
                                 Evolved from a simple weather app to a <strong>global app supporting 6 languages</strong>, 
                                 continuously adding practical features like real-time weather alerts, hourly/weekly forecasts, and location search based on user feedback.
                             </p>
+
+                            <!-- Technical Implementation Diagram -->
+                            <div class="tech-diagram">
+                                <div class="diagram-title">🔧 Core Technical Architecture</div>
+                                <div class="flow-diagram">
+                                    <div class="flow-box">User Input</div>
+                                    <div class="flow-arrow">→</div>
+                                    <div class="flow-box">Geocoding API</div>
+                                    <div class="flow-arrow">→</div>
+                                    <div class="flow-box">Lat/Lng Conversion</div>
+                                    <div class="flow-arrow">→</div>
+                                    <div class="flow-box">Weather API Call</div>
+                                    <div class="flow-arrow">→</div>
+                                    <div class="flow-box">Real-time UI Output</div>
+                                </div>
+                                <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.8rem; margin-top: 0.8rem;">
+                                    Coordinate-based data flow design for global city search
+                                </p>
+                            </div>
+
+                            <!-- Development Timeline -->
+                            <div class="timeline-section">
+                                <div class="timeline-title">📱 Development Timeline</div>
+                                <div class="timeline-subtitle">Idea → Closed Test → Launch → Major Update</div>
+                                
+                                <ol class="timeline-list">
+                                    <li class="timeline-item">
+                                        <div class="timeline-when">Late June ~ July 13</div>
+                                        <div>
+                                            <p class="timeline-what"><strong>Planning & Closed Testing (3 weeks)</strong> — Basic UI/UX build, OpenWeather + Render API protection, testing/bug fixes</p>
+                                            <div class="timeline-badges">
+                                                <span class="timeline-badge">UI/UX</span>
+                                                <span class="timeline-badge">OpenWeather</span>
+                                                <span class="timeline-badge">Render</span>
+                                                <span class="timeline-badge">Closed Test</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    
+                                    <li class="timeline-item">
+                                        <div class="timeline-when">July 13</div>
+                                        <div>
+                                            <p class="timeline-what"><strong>First Public Release</strong> — Character reactions (sunny/cloudy/snowy), location-based weather, 7AM alarms</p>
+                                            <div class="timeline-badges">
+                                                <span class="timeline-badge">Release</span>
+                                                <span class="timeline-badge">Character UX</span>
+                                                <span class="timeline-badge">Alarm</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    
+                                    <li class="timeline-item">
+                                        <div class="timeline-when">Aug 1~3</div>
+                                        <div>
+                                            <p class="timeline-what"><strong>Major Update (3-day sprint)</strong> — Open-Meteo migration, global city search, hourly/weekly forecasts, TTS, multilingual support</p>
+                                            <div class="timeline-badges">
+                                                <span class="timeline-badge">Open-Meteo</span>
+                                                <span class="timeline-badge">Global Search</span>
+                                                <span class="timeline-badge">TTS</span>
+                                                <span class="timeline-badge">i18n</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    
+                                    <li class="timeline-item">
+                                        <div class="timeline-when">After August</div>
+                                        <div>
+                                            <p class="timeline-what"><strong>Expansion & Stabilization</strong> — Performance tuning, portfolio/deployment channel organization</p>
+                                            <div class="timeline-badges">
+                                                <span class="timeline-badge">Performance</span>
+                                                <span class="timeline-badge">Optimization</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
                             
                             <div class="project-details global-feature">
                                 <div class="project-challenge">
@@ -1579,26 +1555,6 @@
                                     • SDK35 policy compliance and successful Google Play release
                                 </div>
                             </div>
-
-                            <div class="project-details ai-challenge">
-                                <div class="project-challenge">
-                                    <strong>🔍 Search Function Problem-Solving Story:</strong><br>
-                                    • <em>Problem:</em> Continuous errors during location search, AIs only focused on search logic<br>
-                                    • <em>AI limitation:</em> Focused only on search part, missing the overall flow<br>
-                                    • <em>Breakthrough:</em> "Let's connect search and weather display in one flow!"<br>
-                                    • <em>Solution:</em> Integrated API calls and UI updates into a single flow<br>
-                                    • <em>Result:</em> Search → immediate weather info reflection, greatly improved UX
-                                </div>
-                            </div>
-
-                            <div class="project-details">
-                                <div class="project-challenge">
-                                    <strong>🎮 Games & Optimization:</strong><br>
-                                    • 4 mini-game logic design and memory optimization<br>
-                                    • Overall system stability improvement and performance tuning<br>
-                                    • App compatibility verification in multilingual environments
-                                </div>
-                            </div>
                         </div>
                         
                         <div class="tech-stack">
@@ -1618,7 +1574,7 @@
                 </div>
 
                 <!-- 키워드 마스터 프로젝트 -->
-                <div class="project-card" onclick="toggleProject(this)">
+                <div class="project-card glass-card" onclick="toggleProject(this)">
                     <div class="project-header">
                         <h3 class="project-title" data-lang="ko">달멍봇 키워드 마스터 V2</h3>
                         <h3 class="project-title" data-lang="en" style="display:none;">Dalmong Keyword Master V2</h3>
@@ -1717,25 +1673,25 @@
                     or just want to chat about technology, feel free to reach out anytime!
                 </p>
                 <div class="contact-links">
-                    <div class="contact-item" onclick="copyEmail()">
+                    <div class="contact-item glass-card" onclick="copyEmail()">
                         <span class="contact-icon">📧</span>
                         <div class="contact-title">Email</div>
                         <div class="contact-desc" data-lang="ko">클릭해서 복사</div>
                         <div class="contact-desc" data-lang="en" style="display:none;">Click to copy</div>
                     </div>
-                    <div class="contact-item" onclick="copyEmail()">
+                    <div class="contact-item glass-card" onclick="copyEmail()">
                         <span class="contact-icon">📋</span>
                         <div class="contact-title">Copy</div>
                         <div class="contact-desc" data-lang="ko">이메일 복사</div>
                         <div class="contact-desc" data-lang="en" style="display:none;">Copy email</div>
                     </div>
-                    <a href="https://github.com/sunnybear21" target="_blank" class="contact-item">
+                    <a href="https://github.com/sunnybear21" target="_blank" class="contact-item glass-card">
                         <span class="contact-icon">💻</span>
                         <div class="contact-title">GitHub</div>
                         <div class="contact-desc" data-lang="ko">코드 보기</div>
                         <div class="contact-desc" data-lang="en" style="display:none;">View code</div>
                     </a>
-                    <a href="https://www.youtube.com/@baeksuetv" target="_blank" class="contact-item">
+                    <a href="https://www.youtube.com/@baeksuetv" target="_blank" class="contact-item glass-card">
                         <span class="contact-icon">🎥</span>
                         <div class="contact-title">YouTube</div>
                         <div class="contact-desc" data-lang="ko">영상 보기</div>
@@ -1754,14 +1710,8 @@
                 <div class="bgm-title">Cafe Music</div>
                 <div class="bgm-artist">by Sunnybear</div>
             </div>
-            <div class="volume-control">
-                <span class="volume-icon">🎧</span>
-            </div>
         </div>
     </div>
-
-    </div>
-    <!-- 메인 콘텐츠 끝 -->
 
     <script>
         // 언어 전환 함수를 window 객체에 직접 정의
@@ -1867,18 +1817,6 @@
 
         // 페이지 로드 후 이벤트 리스너 등록
         window.addEventListener('load', function() {
-            // 문 열림 애니메이션 시작
-            setTimeout(function() {
-                var loadingOverlay = document.getElementById('loadingOverlay');
-                loadingOverlay.classList.add('door-opening');
-                
-                // 모든 요소가 사라진 후 오버레이 숨기기
-                setTimeout(function() {
-                    loadingOverlay.classList.add('hidden');
-                    document.body.classList.add('content-revealed');
-                }, 2500);
-            }, 2000); // 2초 후 문 열림 시작
-
             // 부드러운 스크롤
             document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
                 anchor.addEventListener('click', function(e) {
@@ -1899,12 +1837,12 @@
             animateOnScroll();
             
             setTimeout(function() {
-                console.log('🚪 한국 전통 구름의 문이 열리며 글로벌 AI 믹스 마스터 써니베어 등장!');
+                console.log('✨ 투명 글래스 스타일로 통일된 포트폴리오가 준비되었습니다!');
+                console.log('🔧 기술 다이어그램과 개발 타임라인이 추가되었어요!');
+                console.log('📱 달멍씨 앱의 데이터 흐름을 한눈에 확인하세요!');
                 console.log('🎵 우하단 버튼을 눌러 써니베어님의 카페음악을 들어보세요!');
-                console.log('📱 달멍씨 앱이 이제 6개 국어를 지원합니다!');
                 console.log('🌐 우상단 언어 버튼으로 한국어/English 전환 가능합니다!');
-                console.log('☁️ 문 열림 효과가 마음에 드셨나요?');
-            }, 4500);
+            }, 1000);
         });
 
         // 스크롤 이벤트
@@ -1914,10 +1852,10 @@
             var header = document.querySelector('.header');
             if (header) {
                 if (window.scrollY > 100) {
-                    header.style.background = 'rgba(255, 255, 255, 0.98)';
+                    header.style.background = 'rgba(255, 255, 255, 0.15)';
                     header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
                 } else {
-                    header.style.background = 'rgba(255, 255, 255, 0.95)';
+                    header.style.background = 'rgba(255, 255, 255, 0.1)';
                     header.style.boxShadow = 'none';
                 }
             }
