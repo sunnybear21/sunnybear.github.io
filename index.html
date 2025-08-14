@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-ko="써니베어 - AI 오케스트레이터 & 프로덕트 메이커" data-en="Sunnybear - AI Orchestrator & Product Maker">써니베어 - AI 오케스트레이터 & 프로덕트 메이커</title>
+    <meta name="description" content="다양한 AI들을 믹스해서 실제 프로덕트를 만드는 빌더 써니베어의 포트폴리오">
+    <meta name="keywords" content="AI, 개발자, 모바일앱, 웹앱, 포트폴리오, 써니베어">
+    
     <style>
         * {
             margin: 0;
@@ -12,7 +15,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             color: #333;
             overflow-x: hidden;
@@ -39,17 +42,6 @@
             }
         }
 
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {
                 transform: translateY(0);
@@ -68,39 +60,6 @@
             }
             50% {
                 transform: translateY(-20px) rotate(5deg);
-            }
-        }
-
-        @keyframes colorShift {
-            0% { color: #FF6B6B; }
-            25% { color: #4ECDC4; }
-            50% { color: #45B7D1; }
-            75% { color: #96CEB4; }
-            100% { color: #FF6B6B; }
-        }
-
-        @keyframes textColorChange {
-            0% { color: rgba(255, 255, 255, 0.9); }
-            50% { color: rgba(255, 255, 255, 1); }
-            100% { color: rgba(255, 255, 255, 0.9); }
-        }
-
-        @keyframes cloudFloat {
-            0%, 100% {
-                transform: translateY(0px) translateX(0px) rotate(0deg);
-                opacity: 0.9;
-            }
-            25% {
-                transform: translateY(-10px) translateX(5px) rotate(1deg);
-                opacity: 1;
-            }
-            50% {
-                transform: translateY(-15px) translateX(-3px) rotate(-1deg);
-                opacity: 0.95;
-            }
-            75% {
-                transform: translateY(-8px) translateX(8px) rotate(0.5deg);
-                opacity: 1;
             }
         }
 
@@ -201,6 +160,7 @@
             color: white;
         }
 
+        /* 언어 전환 */
         [data-lang="ko"] {
             display: block;
         }
@@ -225,7 +185,7 @@
             display: block !important;
         }
 
-        /* 메인 컨테이너 */
+        /* 컨테이너 */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -271,7 +231,7 @@
         .typing-text {
             font-size: 1.5rem;
             margin-bottom: 2rem;
-            animation: colorShift 3s ease-in-out infinite;
+            color: rgba(255, 255, 255, 0.95);
         }
 
         .ai-badges {
@@ -322,10 +282,9 @@
             margin-bottom: 3rem;
             color: white;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-            animation: textColorChange 3s ease-in-out infinite;
         }
 
-        /* 글래스 스타일 통일 */
+        /* 글래스 카드 */
         .glass-card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
@@ -342,7 +301,7 @@
             border-color: rgba(255, 255, 255, 0.3);
         }
 
-        /* 어바웃 섹션 */
+        /* 소개 섹션 */
         .about-content {
             max-width: 800px;
             margin: 0 auto;
@@ -355,8 +314,7 @@
             line-height: 1.8;
             color: rgba(255, 255, 255, 0.95);
             margin-bottom: 2rem;
-            opacity: 0;
-            animation: slideInLeft 1s ease-out 0.5s forwards;
+            animation: fadeInUp 1s ease-out 0.5s both;
         }
 
         .highlight {
@@ -365,28 +323,7 @@
             font-weight: 700;
             padding: 2px 6px;
             border-radius: 8px;
-            position: relative;
-            border: none;
             box-shadow: 0 2px 8px rgba(255, 224, 102, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .highlight::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255, 224, 102, 0.1), rgba(255, 224, 102, 0.3));
-            border-radius: 8px;
-            z-index: -1;
-            animation: highlightGlow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes highlightGlow {
-            0% { opacity: 0.5; transform: scale(1); }
-            100% { opacity: 1; transform: scale(1.02); }
         }
 
         /* 스킬 섹션 */
@@ -403,9 +340,7 @@
         .skill-card {
             padding: 2rem;
             text-align: center;
-            opacity: 0;
-            transform: translateY(50px);
-            animation: fadeInUp 0.8s ease-out forwards;
+            animation: fadeInUp 0.8s ease-out both;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -449,9 +384,7 @@
         }
 
         .project-card {
-            opacity: 0;
-            transform: translateY(50px);
-            animation: fadeInUp 1s ease-out forwards;
+            animation: fadeInUp 1s ease-out both;
             cursor: pointer;
             overflow: hidden;
             position: relative;
@@ -545,10 +478,8 @@
             opacity: 1;
             padding: 0 2rem 2rem;
             overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
         }
 
-        /* 스크롤바 스타일링 */
         .project-body::-webkit-scrollbar {
             width: 6px;
         }
@@ -563,143 +494,11 @@
             border-radius: 3px;
         }
 
-        .project-body::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.5);
-        }
-
         .project-desc {
             color: rgba(255, 255, 255, 0.9);
             line-height: 1.6;
             margin-bottom: 1.5rem;
             font-size: 1rem;
-        }
-
-        /* 기술 다이어그램 추가 */
-        .tech-diagram {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            text-align: center;
-        }
-
-        .diagram-title {
-            color: rgba(255, 224, 102, 1);
-            font-weight: 600;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .flow-diagram {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .flow-box {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            white-space: nowrap;
-        }
-
-        .flow-arrow {
-            color: rgba(255, 224, 102, 0.8);
-            font-weight: bold;
-        }
-
-        /* 타임라인 섹션 */
-        .timeline-section {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-        }
-
-        .timeline-title {
-            color: white;
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-subtitle {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .timeline-list {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            position: relative;
-        }
-
-        .timeline-list:before {
-            content: "";
-            position: absolute;
-            left: 12px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: rgba(255, 224, 102, 0.5);
-        }
-
-        .timeline-item {
-            display: grid;
-            grid-template-columns: 180px 1fr;
-            gap: 16px;
-            position: relative;
-            padding: 14px 0;
-        }
-
-        .timeline-item:before {
-            content: "";
-            position: absolute;
-            left: 4px;
-            top: 22px;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: rgba(255, 224, 102, 0.8);
-            box-shadow: 0 0 0 4px rgba(255, 224, 102, 0.18);
-        }
-
-        .timeline-when {
-            font-weight: 700;
-            color: white;
-            font-size: 0.9rem;
-        }
-
-        .timeline-what {
-            margin: 0;
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.6;
-            font-size: 0.9rem;
-        }
-
-        .timeline-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin: 6px 0 0;
-        }
-
-        .timeline-badge {
-            font-size: 0.7rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 4px 8px;
-            border-radius: 12px;
-            color: rgba(255, 255, 255, 0.8);
         }
 
         .project-details {
@@ -723,24 +522,6 @@
             font-weight: 600;
         }
 
-        .new-feature {
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(129, 199, 132, 0.15));
-            border-left: 4px solid #4CAF50;
-            margin: 1rem 0;
-        }
-
-        .ai-challenge {
-            background: linear-gradient(135deg, rgba(255, 152, 0, 0.15), rgba(255, 193, 7, 0.15));
-            border-left: 4px solid #FF9800;
-            margin: 1rem 0;
-        }
-
-        .global-feature {
-            background: linear-gradient(135deg, rgba(33, 150, 243, 0.15), rgba(100, 181, 246, 0.15));
-            border-left: 4px solid #2196F3;
-            margin: 1rem 0;
-        }
-
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
@@ -759,7 +540,6 @@
             font-weight: 600;
             transition: transform 0.2s ease;
             white-space: nowrap;
-            flex-shrink: 0;
         }
 
         .tech-tag:hover {
@@ -776,14 +556,12 @@
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
-            display: inline-block;
-            margin-top: 1rem;
-            width: 100%;
-            text-align: center;
-            min-height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-top: 1rem;
+            width: 100%;
+            text-align: center;
             backdrop-filter: blur(10px);
         }
 
@@ -791,6 +569,138 @@
             transform: translateY(-2px);
             background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3));
             box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+        }
+
+        /* 앱 갤러리 스타일 */
+        .app-gallery {
+            margin: 2rem 0;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .gallery-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-track {
+            display: flex;
+            transition: transform 0.5s ease;
+            gap: 1rem;
+        }
+
+        .screenshot {
+            flex-shrink: 0;
+            width: 250px;
+            text-align: center;
+        }
+
+        .screenshot img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot:hover img {
+            transform: scale(1.05);
+        }
+
+        .screenshot-desc {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.85rem;
+            margin-top: 0.8rem;
+            font-weight: 500;
+        }
+
+        .gallery-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+
+        .gallery-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .gallery-prev {
+            left: 10px;
+        }
+
+        .gallery-next {
+            right: 10px;
+        }
+
+        .gallery-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .gallery-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-dot.active {
+            background: rgba(255, 255, 255, 0.9);
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .screenshot {
+                width: 200px;
+            }
+            
+            .gallery-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+            
+            .gallery-prev {
+                left: 5px;
+            }
+            
+            .gallery-next {
+                right: 5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .screenshot {
+                width: 180px;
+            }
+            
+            .app-gallery {
+                padding: 1.5rem;
+            }
         }
 
         /* 연락처 섹션 */
@@ -808,13 +718,13 @@
             color: rgba(255, 255, 255, 0.95);
             font-size: 1.2rem;
             margin-bottom: 3rem;
-            animation: fadeInUp 1s ease-out;
+            animation: fadeInUp 1s ease-out both;
             line-height: 1.6;
         }
 
         .contact-links {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1.5rem;
             max-width: 600px;
             margin: 0 auto;
@@ -829,9 +739,9 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            aspect-ratio: 1;
             position: relative;
             overflow: hidden;
+            aspect-ratio: 1;
         }
 
         .contact-item::before {
@@ -979,6 +889,23 @@
             animation-delay: 4s;
         }
 
+        /* 햄버거 메뉴 */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 2px 0;
+            transition: 0.3s;
+            border-radius: 3px;
+        }
+
         /* 반응형 */
         @media (max-width: 768px) {
             .nav {
@@ -1001,9 +928,8 @@
                 display: none;
             }
 
-            .projects-grid {
-                flex-direction: column;
-                gap: 1.5rem;
+            .hamburger {
+                display: flex;
             }
 
             .skills-grid {
@@ -1016,14 +942,6 @@
             .skill-card {
                 padding: 1.5rem;
                 min-height: 200px;
-            }
-
-            .skill-title {
-                font-size: 1.1rem;
-            }
-
-            .skill-desc {
-                font-size: 0.85rem;
             }
 
             .ai-badges {
@@ -1040,18 +958,6 @@
             .contact-item {
                 padding: 1.5rem;
                 aspect-ratio: auto;
-            }
-
-            .contact-icon {
-                font-size: 2rem;
-            }
-
-            .contact-title {
-                font-size: 1rem;
-            }
-
-            .contact-desc {
-                font-size: 0.85rem;
             }
 
             .bgm-player {
@@ -1082,24 +988,6 @@
             .section-title {
                 font-size: 2rem;
             }
-
-            .timeline-item {
-                grid-template-columns: 1fr;
-                padding-left: 28px;
-            }
-
-            .timeline-list:before {
-                left: 10px;
-            }
-
-            .timeline-item:before {
-                left: 1px;
-            }
-
-            .flow-diagram {
-                flex-direction: column;
-                gap: 0.8rem;
-            }
         }
 
         @media (max-width: 480px) {
@@ -1124,18 +1012,6 @@
                 font-size: 0.8rem;
             }
         }
-
-        /* 스크롤 애니메이션을 위한 클래스 */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease-out;
-        }
-
-        .animate-on-scroll.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
     </style>
 </head>
 <body data-current-lang="ko">
@@ -1150,6 +1026,11 @@
                     <li><a href="#projects" data-ko="프로젝트" data-en="Projects">프로젝트</a></li>
                     <li><a href="#contact" data-ko="연락처" data-en="Contact">연락처</a></li>
                 </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
                 <div class="lang-switch">
                     <button class="lang-btn active" onclick="window.switchLanguage('ko')">한국어</button>
                     <button class="lang-btn" onclick="window.switchLanguage('en')">English</button>
@@ -1205,7 +1086,7 @@
                         한 AI에 의존하지 않고 상황에 맞는 최적의 AI를 선택해서 협업하는 스타일입니다.
                     </p>
                     <p class="about-text">
-                        비전공자지만 <span class="highlight">3주 만에 모바일 앱 출시</span>, <span class="highlight">6개 국어 다국어 지원</span>, 
+                        비전공자지만 <span class="highlight">3주 만에 모바일 앱 출시</span>, <span class="highlight">한국어/영어 이중언어 지원</span>, 
                         <span class="highlight">TTS 음성 기능 구현</span>, <span class="highlight">4종 미니게임 개발</span> 등 실제로 작동하는 프로덕트를 계속 만들어내고 있습니다!
                     </p>
                 </div>
@@ -1219,7 +1100,7 @@
                         My approach involves selecting the optimal AI for each situation rather than depending on a single system.
                     </p>
                     <p class="about-text">
-                        Despite being a non-developer, I've achieved <span class="highlight">mobile app launch in 3 weeks</span>, <span class="highlight">6-language global support</span>, 
+                        Despite being a non-developer, I've achieved <span class="highlight">mobile app launch in 3 weeks</span>, <span class="highlight">Korean/English bilingual support</span>, 
                         <span class="highlight">TTS voice implementation</span>, and <span class="highlight">4 mini-game development</span> - continuously building products that actually work!
                     </p>
                 </div>
@@ -1231,18 +1112,18 @@
     <section id="skills" class="section">
         <div class="container">
             <h2 class="section-title" data-lang="ko">핵심 역량</h2>
-            <h2 class="section-title" data-lang="en" style="display:none;">Core Skills</h2>
+            <h2 class="section-title" data-lang="en">Core Skills</h2>
             
             <div class="skills-grid">
                 <div class="skill-card glass-card">
                     <div class="skill-icon">⚡</div>
                     <h3 class="skill-title" data-lang="ko">AI 오케스트레이션</h3>
-                    <h3 class="skill-title" data-lang="en" style="display:none;">AI Orchestration</h3>
+                    <h3 class="skill-title" data-lang="en">AI Orchestration</h3>
                     <p class="skill-desc" data-lang="ko">
                         GPT, Gemini, Claude, Suno, Veo 등 각 AI의 강점을 파악하고 
                         상황에 맞게 믹스해서 최적의 결과를 만들어내는 능력
                     </p>
-                    <p class="skill-desc" data-lang="en" style="display:none;">
+                    <p class="skill-desc" data-lang="en">
                         Ability to identify strengths of each AI (GPT, Gemini, Claude, Suno, Veo) 
                         and mix them strategically to achieve optimal results
                     </p>
@@ -1250,12 +1131,12 @@
                 <div class="skill-card glass-card">
                     <div class="skill-icon">⚙️</div>
                     <h3 class="skill-title" data-lang="ko">풀스택 구현</h3>
-                    <h3 class="skill-title" data-lang="en" style="display:none;">Full-Stack Implementation</h3>
+                    <h3 class="skill-title" data-lang="en">Full-Stack Implementation</h3>
                     <p class="skill-desc" data-lang="ko">
                         모바일 앱(Android), 웹앱(React), 백엔드(Node.js), 
                         API 연동까지 전체 시스템을 구축하는 통합 역량
                     </p>
-                    <p class="skill-desc" data-lang="en" style="display:none;">
+                    <p class="skill-desc" data-lang="en">
                         Comprehensive capability to build entire systems from mobile apps (Android), 
                         web apps (React), backend (Node.js), to API integrations
                     </p>
@@ -1263,12 +1144,12 @@
                 <div class="skill-card glass-card">
                     <div class="skill-icon">🎯</div>
                     <h3 class="skill-title" data-lang="ko">로직 헌터</h3>
-                    <h3 class="skill-title" data-lang="en" style="display:none;">Logic Hunter</h3>
+                    <h3 class="skill-title" data-lang="en">Logic Hunter</h3>
                     <p class="skill-desc" data-lang="ko">
                         복잡한 문제의 본질을 파고들어 근본 원인을 찾아내고, 
                         AI들과 협업해서 해결책을 찾는 끈질긴 문제해결 능력
                     </p>
-                    <p class="skill-desc" data-lang="en" style="display:none;">
+                    <p class="skill-desc" data-lang="en">
                         Persistent problem-solving ability to dig into complex issues, 
                         find root causes, and collaborate with AIs to discover solutions
                     </p>
@@ -1276,12 +1157,12 @@
                 <div class="skill-card glass-card">
                     <div class="skill-icon">🚀</div>
                     <h3 class="skill-title" data-lang="ko">빠른 실행력</h3>
-                    <h3 class="skill-title" data-lang="en" style="display:none;">Rapid Execution</h3>
+                    <h3 class="skill-title" data-lang="en">Rapid Execution</h3>
                     <p class="skill-desc" data-lang="ko">
                         아이디어부터 실제 서비스 출시까지 3주 만에 완성하는 
                         초스피드 개발과 즉시 실행하는 액션 능력
                     </p>
-                    <p class="skill-desc" data-lang="en" style="display:none;">
+                    <p class="skill-desc" data-lang="en">
                         Ultra-fast development completing from idea to actual service launch 
                         in 3 weeks, with immediate action-taking capability
                     </p>
@@ -1294,265 +1175,157 @@
     <section id="projects" class="section">
         <div class="container">
             <h2 class="section-title" data-lang="ko">실전 프로젝트</h2>
-            <h2 class="section-title" data-lang="en" style="display:none;">Real Projects</h2>
+            <h2 class="section-title" data-lang="en">Real Projects</h2>
             <div class="projects-grid">
                 <!-- 달멍씨 프로젝트 -->
                 <div class="project-card glass-card" onclick="toggleProject(this)">
                     <div class="project-header">
                         <h3 class="project-title" data-lang="ko">날씨요정 달멍씨 v1.9.3</h3>
-                        <h3 class="project-title" data-lang="en" style="display:none;">Weather Fairy Dalmong v1.9.3</h3>
-                        <p class="project-subtitle" data-lang="ko">🌍 6개 국어 + TTS 음성 + 미니게임이 있는 글로벌 날씨 앱</p>
-                        <p class="project-subtitle" data-lang="en" style="display:none;">🌍 Global weather app with 6 languages + TTS voice + mini-games</p>
+                        <h3 class="project-title" data-lang="en">Weather Fairy Dalmong v1.9.3</h3>
+                        <p class="project-subtitle" data-lang="ko">🌍 한국어/영어 지원 + TTS 음성 + 미니게임이 있는 글로벌 날씨 앱</p>
+                        <p class="project-subtitle" data-lang="en">🌍 Global weather app with Korean/English support + TTS voice + mini-games</p>
                         <span class="project-status status-live" data-lang="ko">출시완료</span>
-                        <span class="project-status status-live" data-lang="en" style="display:none;">Live</span>
+                        <span class="project-status status-live" data-lang="en">Live</span>
                     </div>
                     <div class="project-body">
+                        <!-- 앱 스크린샷 갤러리 -->
+                        <div class="app-gallery">
+                            <div class="gallery-container">
+                                <div class="gallery-track" id="galleryTrack">
+                                    <div class="screenshot">
+                                        <div class="screenshot-placeholder" data-bg="1">
+                                            <div class="placeholder-content">
+                                                <span class="placeholder-icon">📱</span>
+                                                <p data-lang="ko">스마트 날씨 정보</p>
+                                                <p data-lang="en">Smart Weather Info</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="screenshot">
+                                        <div class="screenshot-placeholder" data-bg="2">
+                                            <div class="placeholder-content">
+                                                <span class="placeholder-icon">🌤️</span>
+                                                <p data-lang="ko">깔끔한 화이트 모드</p>
+                                                <p data-lang="en">Clean White Mode</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="screenshot">
+                                        <div class="screenshot-placeholder" data-bg="3">
+                                            <div class="placeholder-content">
+                                                <span class="placeholder-icon">⚙️</span>
+                                                <p data-lang="ko">맞춤형 설정</p>
+                                                <p data-lang="en">Custom Settings</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="screenshot">
+                                        <div class="screenshot-placeholder" data-bg="4">
+                                            <div class="placeholder-content">
+                                                <span class="placeholder-icon">🌍</span>
+                                                <p data-lang="ko">글로벌 다국어 지원</p>
+                                                <p data-lang="en">Global Multilingual</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="screenshot">
+                                        <div class="screenshot-placeholder" data-bg="5">
+                                            <div class="placeholder-content">
+                                                <span class="placeholder-icon">📌</span>
+                                                <p data-lang="ko">편리한 홈 위젯</p>
+                                                <p data-lang="en">Convenient Widget</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="gallery-btn gallery-prev" onclick="scrollGallery(-1)">‹</button>
+                                <button class="gallery-btn gallery-next" onclick="scrollGallery(1)">›</button>
+                            </div>
+                            <div class="gallery-dots" id="galleryDots"></div>
+                            <p class="gallery-note" data-lang="ko">
+                                💡 실제 앱 스크린샷은 <a href="https://play.google.com/store/apps/details?id=com.sunnybear.weather1" target="_blank" style="color: #FFE066; text-decoration: underline;">Google Play Store</a>에서 확인하실 수 있습니다!
+                            </p>
+                            <p class="gallery-note" data-lang="en">
+                                💡 View actual app screenshots on <a href="https://play.google.com/store/apps/details?id=com.sunnybear.weather1" target="_blank" style="color: #FFE066; text-decoration: underline;">Google Play Store</a>!
+                            </p>
+                        </div>
+
                         <div data-lang="ko">
                             <p class="project-desc">
                                 코딩 지식 제로에서 시작해서 3주 만에 Google Play Store 정식 출시한 모바일 앱입니다. 
-                                단순한 날씨 앱에서 <strong>6개 국어를 지원하는 글로벌 앱</strong>으로 진화했고, 
+                                단순한 날씨 앱에서 <strong>한국어/영어를 지원하는 글로벌 앱</strong>으로 진화했고, 
                                 유저 피드백을 반영해 실시간 기상특보, 시간별/주간별 예보, 위치 검색 등 실용적인 기능들을 계속 추가하고 있습니다.
                             </p>
 
-                            <!-- 기술적 구현 다이어그램 -->
-                            <div class="tech-diagram">
-                                <div class="diagram-title">🔧 핵심 기술 아키텍처</div>
-                                <div class="flow-diagram">
-                                    <div class="flow-box">사용자 검색어</div>
-                                    <div class="flow-arrow">→</div>
-                                    <div class="flow-box">지오코딩 API</div>
-                                    <div class="flow-arrow">→</div>
-                                    <div class="flow-box">위도·경도 변환</div>
-                                    <div class="flow-arrow">→</div>
-                                    <div class="flow-box">날씨 API 호출</div>
-                                    <div class="flow-arrow">→</div>
-                                    <div class="flow-box">실시간 UI 출력</div>
-                                </div>
-                                <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.8rem; margin-top: 0.8rem;">
-                                    전세계 도시 검색을 위한 좌표 기반 데이터 흐름 설계
-                                </p>
-                            </div>
-
-                            <!-- 개발 타임라인 -->
-                            <div class="timeline-section">
-                                <div class="timeline-title">📱 개발 타임라인</div>
-                                <div class="timeline-subtitle">아이디어 → 비공개 테스트 → 출시 → 대규모 업데이트</div>
-                                
-                                <ol class="timeline-list">
-                                    <li class="timeline-item">
-                                        <div class="timeline-when">6월 말 ~ 7월 13일</div>
-                                        <div>
-                                            <p class="timeline-what"><strong>기획 & 비공개 테스트(3주)</strong> — 기본 UI/UX 구축, OpenWeather + Render로 API 키 보호, 테스트/버그 수정</p>
-                                            <div class="timeline-badges">
-                                                <span class="timeline-badge">UI/UX</span>
-                                                <span class="timeline-badge">OpenWeather</span>
-                                                <span class="timeline-badge">Render</span>
-                                                <span class="timeline-badge">Closed Test</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    
-                                    <li class="timeline-item">
-                                        <div class="timeline-when">7월 13일</div>
-                                        <div>
-                                            <p class="timeline-what"><strong>첫 공개 출시</strong> — 캐릭터 반응(맑음멍·흐림멍·눈멍), 위치 기반 날씨, 아침 7시 알림</p>
-                                            <div class="timeline-badges">
-                                                <span class="timeline-badge">Release</span>
-                                                <span class="timeline-badge">Character UX</span>
-                                                <span class="timeline-badge">Alarm</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    
-                                    <li class="timeline-item">
-                                        <div class="timeline-when">8월 1~3일</div>
-                                        <div>
-                                            <p class="timeline-what"><strong>대규모 업데이트(3일 집중)</strong> — Open-Meteo 전환, 전세계 도시 검색, 시간별·주간 예보, TTS, 다국어 지원</p>
-                                            <div class="timeline-badges">
-                                                <span class="timeline-badge">Open-Meteo</span>
-                                                <span class="timeline-badge">Global Search</span>
-                                                <span class="timeline-badge">TTS</span>
-                                                <span class="timeline-badge">i18n</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    
-                                    <li class="timeline-item">
-                                        <div class="timeline-when">8월 이후</div>
-                                        <div>
-                                            <p class="timeline-what"><strong>확장 & 안정화</strong> — 성능 튜닝, 포트폴리오/배포 채널 정비</p>
-                                            <div class="timeline-badges">
-                                                <span class="timeline-badge">Performance</span>
-                                                <span class="timeline-badge">Optimization</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ol>
-                            </div>
-                            
-                            <div class="project-details global-feature">
+                            <div class="project-details">
                                 <div class="project-challenge">
-                                    <strong>🌍 글로벌화 도전:</strong><br>
-                                    • 6개 국어 완전 지원: 한국어, 영어, 일본어, 중국어, 스페인어, 프랑스어<br>
-                                    • 언어별 TTS 음성 시스템 구축 (달멍이가 6개 언어로 날씨 안내)<br>
+                                    <strong>🌍 글로벌화 구현:</strong><br>
+                                    • 한국어/영어 완전 지원으로 글로벌 사용자 확보<br>
+                                    • 언어별 TTS 음성 시스템 구축 (달멍이가 2개 언어로 날씨 안내)<br>
                                     • 온도 단위 선택 (섭씨/화씨) 및 지역별 날씨 패턴 대응<br>
                                     • 다국어 UI/UX 레이아웃 최적화와 폰트 호환성 해결
                                 </div>
                             </div>
 
-                            <div class="project-details new-feature">
+                            <div class="project-details">
                                 <div class="project-challenge">
-                                    <strong>✨ 유저 중심 개선사항:</strong><br>
+                                    <strong>✨ 핵심 기능들:</strong><br>
                                     • 실시간 기상특보 알림 (폭염, 한파, 호우 등)<br>
                                     • 시간별 예보 (24시간) + 주간 예보 (7일)<br>
                                     • 스마트 우산 알림 (강수확률 70% 이상 시 자동 알림)<br>
-                                    • 위치 검색 확장 및 GPS 정확도 개선<br>
-                                    • 인터랙티브 달멍이 애니메이션 (드래그로 움직임)
-                                </div>
-                            </div>
-
-                            <div class="project-details ai-challenge">
-                                <div class="project-challenge">
-                                    <strong>🤖 AI 협업 중 실제 문제와 해결:</strong><br>
-                                    • <em>화면 크기 문제:</em> AI가 큰 화면 기준으로 코딩해서 작은 화면에서 레이아웃 깨짐<br>
-                                    • <em>교차 검증의 중요성:</em> 모든 화면 사이즈에서 테스트하니 게임/날씨 섹션 오류 발견<br>
-                                    • <em>해결 과정:</em> 반응형 디자인 재설계하고 모든 기기에서 검증 시스템 구축<br>
-                                    • <em>학습:</em> AI와 협업할 때 명확한 스펙 전달과 다각도 검증의 필요성 깨달음
+                                    • 전세계 도시 검색 기능 및 GPS 정확도 개선<br>
+                                    • 4종 미니게임 (기억력, 반응속도, 퍼즐, 수학) 내장
                                 </div>
                             </div>
 
                             <div class="project-details">
                                 <div class="project-challenge">
-                                    <strong>🛠️ 서버 아키텍처 진화:</strong><br>
-                                    • Firebase → Render 서버로 완전 마이그레이션<br>
+                                    <strong>🛠️ 기술적 구현:</strong><br>
+                                    • Android Studio + Java로 네이티브 앱 개발<br>
                                     • Render 서버에서 API 키 보안 처리 및 백엔드 로직 구현<br>
-                                    • MIT App Inventor → Kodular → Android Studio로 3번의 플랫폼 전환<br>
-                                    • SDK35 정책 대응한 권한 시스템 및 Google Play 출시 완료
+                                    • Open-Meteo API 연동으로 정확한 날씨 데이터 제공<br>
+                                    • Firebase 대신 Render로 완전 마이그레이션해 안정성 확보<br>
+                                    • SDK35 정책 대응 및 Google Play Console 정식 출시
                                 </div>
                             </div>
                         </div>
 
-                        <div data-lang="en" style="display:none;">
+                        <div data-lang="en">
                             <p class="project-desc">
                                 A mobile app launched on Google Play Store in just 3 weeks, starting from zero coding knowledge. 
-                                Evolved from a simple weather app to a <strong>global app supporting 6 languages</strong>, 
+                                Evolved from a simple weather app to a <strong>global app supporting Korean/English</strong>, 
                                 continuously adding practical features like real-time weather alerts, hourly/weekly forecasts, and location search based on user feedback.
                             </p>
 
-                            <!-- Technical Implementation Diagram -->
-                            <div class="tech-diagram">
-                                <div class="diagram-title">🔧 Core Technical Architecture</div>
-                                <div class="flow-diagram">
-                                    <div class="flow-box">User Input</div>
-                                    <div class="flow-arrow">→</div>
-                                    <div class="flow-box">Geocoding API</div>
-                                    <div class="flow-arrow">→</div>
-                                    <div class="flow-box">Lat/Lng Conversion</div>
-                                    <div class="flow-arrow">→</div>
-                                    <div class="flow-box">Weather API Call</div>
-                                    <div class="flow-arrow">→</div>
-                                    <div class="flow-box">Real-time UI Output</div>
-                                </div>
-                                <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.8rem; margin-top: 0.8rem;">
-                                    Coordinate-based data flow design for global city search
-                                </p>
-                            </div>
-
-                            <!-- Development Timeline -->
-                            <div class="timeline-section">
-                                <div class="timeline-title">📱 Development Timeline</div>
-                                <div class="timeline-subtitle">Idea → Closed Test → Launch → Major Update</div>
-                                
-                                <ol class="timeline-list">
-                                    <li class="timeline-item">
-                                        <div class="timeline-when">Late June ~ July 13</div>
-                                        <div>
-                                            <p class="timeline-what"><strong>Planning & Closed Testing (3 weeks)</strong> — Basic UI/UX build, OpenWeather + Render API protection, testing/bug fixes</p>
-                                            <div class="timeline-badges">
-                                                <span class="timeline-badge">UI/UX</span>
-                                                <span class="timeline-badge">OpenWeather</span>
-                                                <span class="timeline-badge">Render</span>
-                                                <span class="timeline-badge">Closed Test</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    
-                                    <li class="timeline-item">
-                                        <div class="timeline-when">July 13</div>
-                                        <div>
-                                            <p class="timeline-what"><strong>First Public Release</strong> — Character reactions (sunny/cloudy/snowy), location-based weather, 7AM alarms</p>
-                                            <div class="timeline-badges">
-                                                <span class="timeline-badge">Release</span>
-                                                <span class="timeline-badge">Character UX</span>
-                                                <span class="timeline-badge">Alarm</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    
-                                    <li class="timeline-item">
-                                        <div class="timeline-when">Aug 1~3</div>
-                                        <div>
-                                            <p class="timeline-what"><strong>Major Update (3-day sprint)</strong> — Open-Meteo migration, global city search, hourly/weekly forecasts, TTS, multilingual support</p>
-                                            <div class="timeline-badges">
-                                                <span class="timeline-badge">Open-Meteo</span>
-                                                <span class="timeline-badge">Global Search</span>
-                                                <span class="timeline-badge">TTS</span>
-                                                <span class="timeline-badge">i18n</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    
-                                    <li class="timeline-item">
-                                        <div class="timeline-when">After August</div>
-                                        <div>
-                                            <p class="timeline-what"><strong>Expansion & Stabilization</strong> — Performance tuning, portfolio/deployment channel organization</p>
-                                            <div class="timeline-badges">
-                                                <span class="timeline-badge">Performance</span>
-                                                <span class="timeline-badge">Optimization</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ol>
-                            </div>
-                            
-                            <div class="project-details global-feature">
+                            <div class="project-details">
                                 <div class="project-challenge">
-                                    <strong>🌍 Globalization Challenge:</strong><br>
-                                    • Full support for 6 languages: Korean, English, Japanese, Chinese, Spanish, French<br>
-                                    • Language-specific TTS voice system (Dalmong speaks weather in 6 languages)<br>
+                                    <strong>🌍 Globalization Implementation:</strong><br>
+                                    • Full Korean/English support for global user acquisition<br>
+                                    • Language-specific TTS voice system (Dalmong speaks weather in 2 languages)<br>
                                     • Temperature unit selection (Celsius/Fahrenheit) and regional weather pattern support<br>
                                     • Multilingual UI/UX layout optimization and font compatibility resolution
                                 </div>
                             </div>
 
-                            <div class="project-details new-feature">
+                            <div class="project-details">
                                 <div class="project-challenge">
-                                    <strong>✨ User-Centered Improvements:</strong><br>
+                                    <strong>✨ Core Features:</strong><br>
                                     • Real-time weather alerts (heat waves, cold snaps, heavy rain, etc.)<br>
                                     • Hourly forecast (24 hours) + Weekly forecast (7 days)<br>
                                     • Smart umbrella reminder (auto alert when precipitation probability >70%)<br>
-                                    • Enhanced location search and improved GPS accuracy<br>
-                                    • Interactive Dalmong animation (movable by dragging)
-                                </div>
-                            </div>
-
-                            <div class="project-details ai-challenge">
-                                <div class="project-challenge">
-                                    <strong>🤖 Real AI Collaboration Problems & Solutions:</strong><br>
-                                    • <em>Screen size issue:</em> AI coded for large screens, causing layout breaks on small screens<br>
-                                    • <em>Cross-validation importance:</em> Testing all screen sizes revealed game/weather section errors<br>
-                                    • <em>Solution process:</em> Redesigned responsive design and built verification system for all devices<br>
-                                    • <em>Learning:</em> Realized importance of clear spec communication and multi-angle verification in AI collaboration
+                                    • Global city search functionality and improved GPS accuracy<br>
+                                    • 4 built-in mini-games (memory, reaction speed, puzzle, math)
                                 </div>
                             </div>
 
                             <div class="project-details">
                                 <div class="project-challenge">
-                                    <strong>🛠️ Server Architecture Evolution:</strong><br>
-                                    • Complete migration from Firebase to Render server<br>
+                                    <strong>🛠️ Technical Implementation:</strong><br>
+                                    • Native app development with Android Studio + Java<br>
                                     • API key security handling and backend logic implementation on Render server<br>
-                                    • Triple platform transition: MIT App Inventor → Kodular → Android Studio<br>
-                                    • SDK35 policy compliance and successful Google Play release
+                                    • Open-Meteo API integration for accurate weather data<br>
+                                    • Complete migration from Firebase to Render for enhanced stability<br>
+                                    • SDK35 policy compliance and official Google Play Console release
                                 </div>
                             </div>
                         </div>
@@ -1560,8 +1333,8 @@
                         <div class="tech-stack">
                             <span class="tech-tag">Android Studio</span>
                             <span class="tech-tag">Java</span>
-                            <span class="tech-tag" data-lang="ko">다국어 TTS</span>
-                            <span class="tech-tag" data-lang="en" style="display:none;">Multilingual TTS</span>
+                            <span class="tech-tag" data-lang="ko">이중언어 TTS</span>
+                            <span class="tech-tag" data-lang="en">Bilingual TTS</span>
                             <span class="tech-tag">Weather API</span>
                             <span class="tech-tag">Render Server</span>
                             <span class="tech-tag">API Security</span>
@@ -1569,7 +1342,7 @@
                         <a href="https://play.google.com/store/apps/details?id=com.sunnybear.weather1" 
                            target="_blank" class="project-btn" onclick="event.stopPropagation()" data-lang="ko">앱 다운로드 (Google Play)</a>
                         <a href="https://play.google.com/store/apps/details?id=com.sunnybear.weather1" 
-                           target="_blank" class="project-btn" onclick="event.stopPropagation()" data-lang="en" style="display:none;">Download App (Google Play)</a>
+                           target="_blank" class="project-btn" onclick="event.stopPropagation()" data-lang="en">Download App (Google Play)</a>
                     </div>
                 </div>
 
@@ -1577,11 +1350,11 @@
                 <div class="project-card glass-card" onclick="toggleProject(this)">
                     <div class="project-header">
                         <h3 class="project-title" data-lang="ko">달멍봇 키워드 마스터 V2</h3>
-                        <h3 class="project-title" data-lang="en" style="display:none;">Dalmong Keyword Master V2</h3>
-                        <p class="project-subtitle" data-lang="ko">AI 기반 SEO 분석 & 콘텐츠 생성 웹앱</p>
-                        <p class="project-subtitle" data-lang="en" style="display:none;">AI-powered SEO analysis & content generation web app</p>
-                        <span class="project-status status-progress" data-lang="ko">진행중</span>
-                        <span class="project-status status-progress" data-lang="en" style="display:none;">In Progress</span>
+                        <h3 class="project-title" data-lang="en">Dalmong Keyword Master V2</h3>
+                        <p class="project-subtitle" data-lang="ko">🔍 AI 기반 SEO 분석 & 콘텐츠 생성 웹앱</p>
+                        <p class="project-subtitle" data-lang="en">🔍 AI-powered SEO analysis & content generation web app</p>
+                        <span class="project-status status-progress" data-lang="ko">개발중</span>
+                        <span class="project-status status-progress" data-lang="en">In Development</span>
                     </div>
                     <div class="project-body">
                         <div data-lang="ko">
@@ -1592,8 +1365,8 @@
                             
                             <div class="project-details">
                                 <div class="project-challenge">
-                                    <strong>기술적 구현:</strong><br>
-                                    • React + TypeScript 프론트엔드 (Vite 번들러)<br>
+                                    <strong>🔧 기술적 구현:</strong><br>
+                                    • React + TypeScript 프론트엔드 (Vite 번들러로 빠른 개발환경)<br>
                                     • Node.js + Express 백엔드 API 서버<br>
                                     • Google Gemini API로 AI 콘텐츠 생성 엔진 구축<br>
                                     • 네이버 검색광고 API 연동으로 실시간 키워드 데이터 수집<br>
@@ -1603,7 +1376,7 @@
 
                             <div class="project-details">
                                 <div class="project-challenge">
-                                    <strong>핵심 알고리즘:</strong><br>
+                                    <strong>🎯 핵심 알고리즘:</strong><br>
                                     • AI 키워드 분석: 검색량, 경쟁강도, 수익성을 종합한 점수 산출<br>
                                     • 콘텐츠 자동 생성: 키워드별 맞춤 SEO 최적화 글 작성<br>
                                     • 실시간 트렌드 분석: 네이버 API 데이터를 AI가 해석해 인사이트 제공<br>
@@ -1612,7 +1385,7 @@
                             </div>
                         </div>
 
-                        <div data-lang="en" style="display:none;">
+                        <div data-lang="en">
                             <p class="project-desc">
                                 A full-stack web app that solves the complexity of SEO keyword analysis with AI. 
                                 Rather than just analyzing keywords, it's a comprehensive solution where AI suggests niche markets and automatically generates SEO-optimized blog content.
@@ -1620,8 +1393,8 @@
                             
                             <div class="project-details">
                                 <div class="project-challenge">
-                                    <strong>Technical Implementation:</strong><br>
-                                    • React + TypeScript frontend (Vite bundler)<br>
+                                    <strong>🔧 Technical Implementation:</strong><br>
+                                    • React + TypeScript frontend (Vite bundler for fast development)<br>
                                     • Node.js + Express backend API server<br>
                                     • AI content generation engine built with Google Gemini API<br>
                                     • Real-time keyword data collection via Naver Search Ads API integration<br>
@@ -1631,7 +1404,7 @@
 
                             <div class="project-details">
                                 <div class="project-challenge">
-                                    <strong>Core Algorithms:</strong><br>
+                                    <strong>🎯 Core Algorithms:</strong><br>
                                     • AI keyword analysis: Comprehensive scoring combining search volume, competition, and profitability<br>
                                     • Automated content generation: Customized SEO-optimized writing for each keyword<br>
                                     • Real-time trend analysis: AI interprets Naver API data to provide insights<br>
@@ -1651,7 +1424,7 @@
                         <a href="https://github.com/sunnybear21/dalmong-keyword-master-v2" 
                            target="_blank" class="project-btn" onclick="event.stopPropagation()" data-lang="ko">GitHub 보기</a>
                         <a href="https://github.com/sunnybear21/dalmong-keyword-master-v2" 
-                           target="_blank" class="project-btn" onclick="event.stopPropagation()" data-lang="en" style="display:none;">View on GitHub</a>
+                           target="_blank" class="project-btn" onclick="event.stopPropagation()" data-lang="en">View on GitHub</a>
                     </div>
                 </div>
             </div>
@@ -1663,12 +1436,12 @@
         <div class="container">
             <div class="contact-content">
                 <h2 class="section-title" data-lang="ko">함께 만들어요!</h2>
-                <h2 class="section-title" data-lang="en" style="display:none;">Let's Build Together!</h2>
+                <h2 class="section-title" data-lang="en">Let's Build Together!</h2>
                 <p class="contact-text" data-lang="ko">
                     AI 믹스하는 재미에 빠진 동료, 새로운 프로젝트 아이디어, 
                     또는 그냥 기술 이야기가 하고 싶으시다면 언제든 연락주세요!
                 </p>
-                <p class="contact-text" data-lang="en" style="display:none;">
+                <p class="contact-text" data-lang="en">
                     Whether you're a fellow AI mixer, have new project ideas, 
                     or just want to chat about technology, feel free to reach out anytime!
                 </p>
@@ -1677,35 +1450,35 @@
                         <span class="contact-icon">📧</span>
                         <div class="contact-title">Email</div>
                         <div class="contact-desc" data-lang="ko">클릭해서 복사</div>
-                        <div class="contact-desc" data-lang="en" style="display:none;">Click to copy</div>
-                    </div>
-                    <div class="contact-item glass-card" onclick="copyEmail()">
-                        <span class="contact-icon">📋</span>
-                        <div class="contact-title">Copy</div>
-                        <div class="contact-desc" data-lang="ko">이메일 복사</div>
-                        <div class="contact-desc" data-lang="en" style="display:none;">Copy email</div>
+                        <div class="contact-desc" data-lang="en">Click to copy</div>
                     </div>
                     <a href="https://github.com/sunnybear21" target="_blank" class="contact-item glass-card">
                         <span class="contact-icon">💻</span>
                         <div class="contact-title">GitHub</div>
                         <div class="contact-desc" data-lang="ko">코드 보기</div>
-                        <div class="contact-desc" data-lang="en" style="display:none;">View code</div>
+                        <div class="contact-desc" data-lang="en">View code</div>
                     </a>
                     <a href="https://www.youtube.com/@baeksuetv" target="_blank" class="contact-item glass-card">
                         <span class="contact-icon">🎥</span>
                         <div class="contact-title">YouTube</div>
                         <div class="contact-desc" data-lang="ko">영상 보기</div>
-                        <div class="contact-desc" data-lang="en" style="display:none;">Watch videos</div>
+                        <div class="contact-desc" data-lang="en">Watch videos</div>
                     </a>
+                    <div class="contact-item glass-card" onclick="openMusic()">
+                        <span class="contact-icon">🎵</span>
+                        <div class="contact-title">Music</div>
+                        <div class="contact-desc" data-lang="ko">카페음악</div>
+                        <div class="contact-desc" data-lang="en">Cafe Music</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- BGM 플레이어 -->
-    <div class="bgm-player" id="bgmPlayer">
+    <div class="bgm-player" id="bgmPlayer" onclick="openMusic()">
         <div class="bgm-controls">
-            <div class="play-btn" onclick="openMusic()" style="cursor: pointer;">🎵</div>
+            <div class="play-btn">🎵</div>
             <div class="bgm-info">
                 <div class="bgm-title">Cafe Music</div>
                 <div class="bgm-artist">by Sunnybear</div>
@@ -1714,7 +1487,59 @@
     </div>
 
     <script>
-        // 언어 전환 함수를 window 객체에 직접 정의
+        // 갤러리 기능
+        let currentSlide = 0;
+        const totalSlides = 5;
+
+        function scrollGallery(direction) {
+            const track = document.getElementById('galleryTrack');
+            const slideWidth = 250 + 16; // 이미지 너비 + gap
+            
+            currentSlide += direction;
+            
+            if (currentSlide < 0) {
+                currentSlide = totalSlides - 1;
+            } else if (currentSlide >= totalSlides) {
+                currentSlide = 0;
+            }
+            
+            const translateX = -currentSlide * slideWidth;
+            track.style.transform = `translateX(${translateX}px)`;
+            
+            updateDots();
+        }
+
+        function updateDots() {
+            const dotsContainer = document.getElementById('galleryDots');
+            dotsContainer.innerHTML = '';
+            
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.className = `gallery-dot ${i === currentSlide ? 'active' : ''}`;
+                dot.onclick = () => goToSlide(i);
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function goToSlide(index) {
+            const track = document.getElementById('galleryTrack');
+            const slideWidth = 250 + 16;
+            
+            currentSlide = index;
+            const translateX = -currentSlide * slideWidth;
+            track.style.transform = `translateX(${translateX}px)`;
+            
+            updateDots();
+        }
+
+        // 자동 슬라이드 (옵션)
+        function startAutoSlide() {
+            setInterval(() => {
+                scrollGallery(1);
+            }, 4000);
+        }
+
+        // 언어 전환 함수
         window.switchLanguage = function(lang) {
             document.body.setAttribute('data-current-lang', lang);
             
@@ -1749,32 +1574,7 @@
             console.log('언어가 ' + (lang === 'ko' ? '한국어' : 'English') + '로 변경되었습니다!');
         };
 
-        function animateOnScroll() {
-            var elements = document.querySelectorAll('.animate-on-scroll');
-            elements.forEach(function(element) {
-                var elementTop = element.getBoundingClientRect().top;
-                var elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('animated');
-                }
-            });
-
-            var scrolled = window.pageYOffset;
-            
-            var sectionTitles = document.querySelectorAll('.section-title');
-            sectionTitles.forEach(function(title, index) {
-                var hue = (scrolled / 10 + index * 60) % 360;
-                title.style.color = 'hsl(' + hue + ', 70%, 85%)';
-            });
-
-            var skillIcons = document.querySelectorAll('.skill-icon');
-            skillIcons.forEach(function(icon, index) {
-                var hue = (scrolled / 8 + index * 90) % 360;
-                icon.style.filter = 'hue-rotate(' + hue + 'deg)';
-            });
-        }
-
+        // 음악 플레이어
         function openMusic() {
             try {
                 var newWindow = window.open('https://soundcloud.com/3ljnfgum3hzs/1a1', '_blank');
@@ -1788,6 +1588,7 @@
             }
         }
 
+        // 이메일 복사
         function copyEmail() {
             if (navigator.clipboard) {
                 navigator.clipboard.writeText('rsy0314@gmail.com').then(function() {
@@ -1800,7 +1601,7 @@
             }
         }
 
-        // 아코디언 토글 함수
+        // 프로젝트 아코디언
         function toggleProject(card) {
             var isExpanded = card.classList.contains('expanded');
             
@@ -1815,9 +1616,8 @@
             }
         }
 
-        // 페이지 로드 후 이벤트 리스너 등록
-        window.addEventListener('load', function() {
-            // 부드러운 스크롤
+        // 부드러운 스크롤
+        function initSmoothScroll() {
             document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -1833,32 +1633,35 @@
                     }
                 });
             });
+        }
 
-            animateOnScroll();
-            
-            setTimeout(function() {
-                console.log('✨ 투명 글래스 스타일로 통일된 포트폴리오가 준비되었습니다!');
-                console.log('🔧 기술 다이어그램과 개발 타임라인이 추가되었어요!');
-                console.log('📱 달멍씨 앱의 데이터 흐름을 한눈에 확인하세요!');
-                console.log('🎵 우하단 버튼을 눌러 써니베어님의 카페음악을 들어보세요!');
-                console.log('🌐 우상단 언어 버튼으로 한국어/English 전환 가능합니다!');
-            }, 1000);
-        });
-
-        // 스크롤 이벤트
-        window.addEventListener('scroll', function() {
-            animateOnScroll();
-            
-            var header = document.querySelector('.header');
-            if (header) {
-                if (window.scrollY > 100) {
-                    header.style.background = 'rgba(255, 255, 255, 0.15)';
-                    header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-                } else {
-                    header.style.background = 'rgba(255, 255, 255, 0.1)';
-                    header.style.boxShadow = 'none';
+        // 헤더 스크롤 효과
+        function initScrollEffects() {
+            window.addEventListener('scroll', function() {
+                var header = document.querySelector('.header');
+                if (header) {
+                    if (window.scrollY > 100) {
+                        header.style.background = 'rgba(255, 255, 255, 0.15)';
+                        header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+                    } else {
+                        header.style.background = 'rgba(255, 255, 255, 0.1)';
+                        header.style.boxShadow = 'none';
+                    }
                 }
-            }
+            });
+        }
+
+        // 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            initSmoothScroll();
+            initScrollEffects();
+            updateDots(); // 갤러리 닷 초기화
+            // startAutoSlide(); // 자동 슬라이드 원하면 주석 해제
+            
+            console.log('🚀 Sunnybear 포트폴리오에 오신 걸 환영합니다!');
+            console.log('📱 달멍씨 앱 스크린샷을 확인해보세요!');
+            console.log('🎵 우하단 버튼을 눌러 써니베어님의 카페음악을 들어보세요!');
+            console.log('🌐 우상단 언어 버튼으로 한국어/English 전환 가능합니다!');
         });
     </script>
 </body>
